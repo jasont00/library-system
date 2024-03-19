@@ -3,6 +3,7 @@ import java.util.List;
 
 /* AbstractUser and UserDirector is done.
  * Fix UserDecorator - look at slides
+ * User purchasing an item goes to payment handler. Requesting goes to admin. Rent item is within this class
  * Finish all methods in User, StudentBuilder, UserBuilder, FacultyBuilder
  * 
  */
