@@ -1,14 +1,15 @@
+
 public class UserBuilder extends AbstractUser {
-	public void buildType() {
-		user.setType("User");
+	public void buildType(String t) {
+		user.setType(t);
 	}
 
-	public void buildEmail() {
-		user.setEmail("UserEmail");
+	public void buildEmail(String e) {
+		user.setEmail(e);
 	}
 
-	public void buildPassword() {
-		user.setPassword("UserPassword");
+	public void buildPassword(String p) {
+		user.setPassword(p);
 	}
 
 	@Override
