@@ -3,7 +3,7 @@ import java.util.List;
 
 /* AbstractUser and UserDirector is done.
  * Fix UserDecorator - look at slides
- * User purchasing an item goes to payment handler. Requesting goes to admin. Rent item is within this class
+ * User purchasing an item goes to payment handler and the item also goes to purchasedItem list. Requesting goes to admin. Rent item is within this class
  * Finish all methods in User, StudentBuilder, UserBuilder, FacultyBuilder
  * 
  */
@@ -16,6 +16,7 @@ public abstract class AbstractUser {
 	public boolean rentEligible;
 	List<Item> rentedItems = new ArrayList<>();
 	List<Newsletter> subscriptions = new ArrayList<>();
+	List<Item> purchasedItems = new ArrayList<>();
 	
 	public abstract void buildType(String t);
 	
