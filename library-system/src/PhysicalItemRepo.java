@@ -13,4 +13,8 @@ public class PhysicalItemRepo {
 		stock.put(id, item);
 	}
 	
+	public HashMap<Integer, Item> getStock() {
+		return stock;
+	}
+	
 }
