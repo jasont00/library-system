@@ -16,11 +16,11 @@ public abstract class AbstractUser {
 	List<Item> rentedItems = new ArrayList<>();
 	List<Newsletter> subscriptions = new ArrayList<>();
 	
-	public abstract void buildType();
+	public abstract void buildType(String t);
 	
-	public abstract void buildEmail();	
+	public abstract void buildEmail(String e);	
 	
-	public abstract void buildPassword();
+	public abstract void buildPassword(String p);
 	
 	public abstract void rentItem(Item i);
 	
@@ -36,3 +36,4 @@ public abstract class AbstractUser {
 		return user;
 	}
 }
+
