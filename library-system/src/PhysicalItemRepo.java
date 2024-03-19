@@ -9,7 +9,7 @@ public class PhysicalItemRepo {
 		stock = new HashMap<>();
 	}
 	
-	public void addStock(Integer id, Item item) {
+	public void addItem(Integer id, Item item) {
 		stock.put(id, item);
 	}
 	
