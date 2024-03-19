@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/* AbstractUser and UserDirector is done.
+ * Fix UserDecorator - look at slides
+ * Finish all methods in User, StudentBuilder, UserBuilder, FacultyBuilder
+ * 
+ */
+
 public abstract class AbstractUser {
 	protected User user;
 	public String type;
