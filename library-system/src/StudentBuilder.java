@@ -1,15 +1,15 @@
 class StudentBuilder extends UserDecorator {
 	
-	public void buildType() {
-		user.setType("Student");
+	public void buildType(String t) {
+		user.setType(t);
 	}
 
-	public void buildEmail() {
-		user.setEmail("StudentEmail");
+	public void buildEmail(String e) {
+		user.setEmail(e);
 	}
 
-	public void buildPassword() {
-		user.setPassword("StudentPassword");
+	public void buildPassword(String p) {
+		user.setPassword(p);
 	}
 
 	@Override
