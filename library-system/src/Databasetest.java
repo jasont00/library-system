@@ -20,13 +20,24 @@ class Databasetest {
 		fact.getItem("titanic", "physicalitem", 19.99, "me", false);
 		//direc.setAbstractUser(abs);
 		AbstractUser abs = new UserBuilder();
+		AbstractUser abst = new UserBuilder();
 		UserDirector direc = new UserDirector();
+		UserDirector direce = new UserDirector();
+
 		direc.setAbstractUser(abs);
 		direc.createUser();
 		User use = direc.getUser();
 		use.setEmail("email@gmail.com");
 		use.setPassword("pass");
 		use.setType("Student");
+		maintain.updateuser(path2);
+		direce.setAbstractUser(abst);
+		direce.createUser();
+		User usee = direce.getUser();
+		usee.setEmail("email@gmail.com");
+		usee.setPassword("Pass66");
+		usee.setType("Student");
+		System.out.println(use.getPassword());
 
 
 		for(Item u: maintain.items){ 
@@ -49,3 +60,4 @@ class Databasetest {
 	}
 
 }
+
