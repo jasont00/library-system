@@ -11,9 +11,9 @@ class UserDirector {
 		return abstractUser.getUser();
 	}
 	
-	public void createUser(String t, String e, String p) {
-		abstractUser.buildType(t);
-		abstractUser.buildEmail(e);
-		abstractUser.buildPassword(p);
+	public void createUser(AbstractUser u, String t, String e, String p) {
+		u.buildType(t);
+		u.buildEmail(e);
+		u.buildPassword(p);
 	}
 }
