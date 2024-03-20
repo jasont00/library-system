@@ -1,5 +1,6 @@
 package librarysystem;
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +48,40 @@ public class TextBookTracker {
         for(TextBookSubject tb:this.textbooks){
             tb.notifyObservers();
         }
+    }
+}
+
+//TODO: This is not completely done because it should be part of the Faculty Class, not here.
+// Consider other member's implement of Faculty and revise it
+class Faculty implements TextBookObserver {
+
+    @Override
+    public void update(TextBookSubject textBookSubject) {
+        // courses the user is teaching and the textbooks the user has previously used.
+        // a new edition is available
+        if(textBookSubject.textbook.available){
+            receiveNotification(textBookSubject.textbook);
+        }
+    }
+
+    private void receiveNotification(Textbook textbook){
+        // The app then offers notifications to the user when a new edition of the textbook is available.
+        System.out.println(textbook.name + "has new edition being available");
+    }
+}
+
+
+class LibraryTeam implements TextBookObserver{
+
+    @Override
+    public void update(TextBookSubject textBookSubject) {
+        //  If a textbook is not available, the app should notify the library management team of this,
+        if(!textBookSubject.textbook.available){
+            requestBookPurchase(textBookSubject.textbook);
+        }
+    }
+
+    public void requestBookPurchase(Textbook textbook){
+        // consult with the user to procure the book.
     }
 }
