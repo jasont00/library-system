@@ -1,6 +1,6 @@
 package librarysystem;
 
-public class RegistrationHandler {
+public class RegistrationHandler{
 
 private static RegistrationHandler instance;
 	
@@ -14,10 +14,14 @@ private static RegistrationHandler instance;
 		return instance;
 	}
 	
-	public boolean verifyEmail() {
+	public boolean verifyEmail(String email) {
+		if(email.contains("@")) {
+			return true;
+		}
 		return false;
 	}
-	public boolean checkStringPW() {
+	public boolean checkStringPW(String pw) {
+		
 		return false;
 	}
 	
