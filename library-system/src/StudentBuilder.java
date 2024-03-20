@@ -2,9 +2,19 @@ package librarysystem;
 
 class StudentBuilder extends UserDecorator {
 	
+	public StudentBuilder(User u) {
+		super(u);
+	}
+
 	public void viewTextbooks() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void assemble() {
+		super.assemble();
+		System.out.println("Student Features");
 	}
 	
 	public void buildType(String t) {
@@ -47,3 +57,4 @@ class StudentBuilder extends UserDecorator {
 	}
 	
 }
+
