@@ -40,7 +40,7 @@ public abstract class AbstractUser {
 	
 	public abstract void requestItem (String s);
 	
-	public abstract void purchase(Item i);
+	public abstract void purchase(Item i) throws Exception;
 
 	public User getUser() {
 		return user;
