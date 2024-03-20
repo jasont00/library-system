@@ -2,9 +2,6 @@ package librarysystem;
 
 class StudentBuilder extends UserDecorator {
 	
-	public StudentBuilder(User u) {
-		super(u);
-	}
 
 	public void viewTextbooks() {
 		// TODO Auto-generated method stub
