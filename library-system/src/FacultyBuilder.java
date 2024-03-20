@@ -2,6 +2,10 @@ package librarysystem;
 
 class FacultyBuilder extends UserDecorator {
 	
+	public FacultyBuilder(User u) {
+		super(u);	
+	}
+
 	public void Courses() {
 		// TODO Auto-generated method stub
 		
@@ -14,6 +18,12 @@ class FacultyBuilder extends UserDecorator {
 	
 	public void update(TextbookSubject t) {
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void assemble() {
+		super.assemble();
+		System.out.println("Faculty Features");
 	}
 	
 	public void buildType(String t) {
