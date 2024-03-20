@@ -1,4 +1,4 @@
-/* Concrete class PhysicalItemRepo is a part of the flyweight pattern and works to store the copies of the PhysicalItems created by the factory.
+package librarysystem;/* Concrete class PhysicalItemRepo is a part of the flyweight pattern and works to store the copies of the PhysicalItems created by the factory.
  */
 import java.util.HashMap;
 

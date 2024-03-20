@@ -1,3 +1,5 @@
+package librarysystem;
+
 class User {
 	
 	private String type = "";

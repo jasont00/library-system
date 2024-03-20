@@ -1,3 +1,4 @@
+package librarysystem;
 
 /* Abstract class describing an Item object. It defines several attributes which are inherited by all subclasses of Item.
 *

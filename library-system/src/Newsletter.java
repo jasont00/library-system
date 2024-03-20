@@ -1,3 +1,4 @@
+package librarysystem;
 
 public class Newsletter extends OnlineItem {
 	// price may want to be handled differently for this class (subscription vs. purchasing price)

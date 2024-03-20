@@ -1,3 +1,5 @@
+package librarysystem;
+
 /* Concrete factory class responsible for creating the concrete subsclasses of the Item class.
  * *note: should publisher be universal for all items? should online items have ids?
  */

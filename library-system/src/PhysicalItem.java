@@ -1,3 +1,5 @@
+package librarysystem;
+
 /* Concrete class PhysicalItem extends Item and represents a physical item that is stored in the library.
  * Unique attribute rentable is a boolean that denotes whether or not the item is available or able to be rented. Admins are able to change this.
  * Zaki: added constructor for databse as well as a to string
