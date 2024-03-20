@@ -8,33 +8,43 @@ import com.csvreader.CsvWriter;
 
 public class Database {
 	public ArrayList<Item> items = new ArrayList<Item>();
+	public ArrayList<User> users = new ArrayList<User>();
+	public static int IDS =0;
 	public String path;
+	private static Database instance;
 	
-	public void load(String path) throws Exception{
-		CsvReader reader = new CsvReader(path); 
-		reader.readHeaders();
-		
-		while(reader.readRecord()){ 
-			Item it = new PhysicalItem();
-			//name,id,email,password
-			it.setName(reader.get("name"));
-			it.setId(Integer.valueOf(reader.get("id")));
-			it.setType(reader.get("type"));
-			it.setPrice(Double.valueOf(reader.get("price")));
-			items.add(it);
-		}
+	//contructors for the singleton pattern
+	private Database() {
 	}
 	
+	public static Database getDatabase() {
+		if(instance==null) {
+			instance = new Database();
+		}
+		return instance;
+	}
+	
+	//adding an item to the arraylist
+	public void loaditem(Item item){
+		item.setId(++IDS);
+		items.add(item);
+		
+	}
+	//adding an user to the arraylist
+	public void loaduser(User user){
+		users.add(user);
+	}
+	
+	//Searching within the database
+	//either for just searching or for getting the price of an item
 	public String search(String path, String book,String func) throws Exception{
 		CsvReader reader = new CsvReader(path); 
 		String result = " ";
 		reader.readHeaders();
 
+		//
 		if(func.equalsIgnoreCase("search")) {
 			while(reader.readRecord()){ 
-				Item it = new PhysicalItem();
-				//name,id,email,password
-				it.setName(reader.get("name"));
 				if(reader.get("name").equalsIgnoreCase("gatsby")) {
 					result = "Search result: User [name=" + reader.get("name") + ", id=" + Integer.valueOf(reader.get("id")) + ", type=" + reader.get("type") + ", price=" + Double.valueOf(reader.get("price"))+"]";
 					return result;
@@ -43,9 +53,6 @@ public class Database {
 		}
 		else if(func.equalsIgnoreCase("pay")) {
 			while(reader.readRecord()){ 
-				Item it = new PhysicalItem();
-				//name,id,email,password
-				it.setName(reader.get("name"));
 				if(reader.get("name").equalsIgnoreCase("gatsby")) {
 					result = (reader.get("price"));
 					return result;
@@ -56,7 +63,7 @@ public class Database {
 		return "don't got it";
 	}
 	
-	public void update(String path) throws Exception{
+	public void updateitem(String path) throws Exception{
 		try {		
 				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
 				//name,id,email,password
@@ -64,15 +71,57 @@ public class Database {
 				csvOutput.write("id");
 		    	csvOutput.write("type");
 				csvOutput.write("price");
+				csvOutput.write("publisher");
+				csvOutput.write("rentable");
+
 				csvOutput.endRecord();
 
 				// else assume that the file already has the correct header line
 				// write out a few records
 				for(Item u: items){
-					csvOutput.write(u.getName());
-					csvOutput.write(String.valueOf(u.getId()));
+					if(u.getClass().equals(OnlineItem.class)) {
+						csvOutput.write(u.getName());
+						csvOutput.write(String.valueOf(u.getId()));
+						csvOutput.write(u.getType());
+						csvOutput.write(String.valueOf(u.getPrice()));
+						csvOutput.write((u.getPublisher()));
+						csvOutput.endRecord();
+					}
+					else if(u.getClass().equals(PhysicalItem.class)) {
+						csvOutput.write(u.getName());
+						csvOutput.write(String.valueOf(u.getId()));
+						csvOutput.write(u.getType());
+						csvOutput.write(String.valueOf(u.getPrice()));
+						csvOutput.write("N/A");
+						csvOutput.write(String.valueOf(u.getRentable()));
+						csvOutput.endRecord();
+					}
+					
+				}
+				csvOutput.close();
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	public void updateuser(String path) throws Exception{
+		try {		
+				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
+				//name,id,email,password
+		    	csvOutput.write("type");
+				csvOutput.write("email");
+				csvOutput.write("password");
+				csvOutput.write("rent eligible");
+
+				csvOutput.endRecord();
+
+				// else assume that the file already has the correct header line
+				// write out a few records
+				for(User u: users){
 					csvOutput.write(u.getType());
-					csvOutput.write(String.valueOf(u.getPrice()));
+					csvOutput.write(u.getEmail());
+					csvOutput.write(u.getPassword());
+					csvOutput.write(String.valueOf(u.getRE()));
 					csvOutput.endRecord();
 				}
 				csvOutput.close();
@@ -88,29 +137,12 @@ public class Database {
 		reader.readHeaders();		
 
 			while(reader.readRecord()){ 
-				Item it = new PhysicalItem();
-				//name,id,email,password
-				it.setName(reader.get("name"));
 				if(reader.get("name").equalsIgnoreCase("gatsby")) {
 					result++;
 				}
 			}
-		
 		return result;
 	}
 	
-	public static void main(String [] args) throws Exception{
-		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
-		Database maintain = new Database();
-		maintain.load(path);
-		for(Item u: maintain.items){
-			System.out.println(u.toString());
-		}
-		
-		Item newUser = new PhysicalItem("gatsby", "book",19.99,false);
-		maintain.items.add(newUser);
-		
-		maintain.update(path);
-		System.out.println(maintain.search(path, "gatsby","search"));
-	}
 }
+
