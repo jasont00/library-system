@@ -14,16 +14,16 @@ class StudentBuilder extends UserDecorator {
 		System.out.println("Student Features");
 	}
 	
-	public void buildType(String t) {
-		user.setType(t);
+	public void buildType() {
+		user.setType("student");
 	}
 
-	public void buildEmail(String e) {
-		user.setEmail(e);
+	public void buildEmail() {
+		user.setEmail("studentsEmail");
 	}
 
-	public void buildPassword(String p) {
-		user.setPassword(p);
+	public void buildPassword() {
+		user.setPassword("studentsPassword");
 	}
 
 	@Override
@@ -54,4 +54,3 @@ class StudentBuilder extends UserDecorator {
 	}
 	
 }
-
