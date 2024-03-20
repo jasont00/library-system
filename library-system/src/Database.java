@@ -59,6 +59,15 @@ public class Database {
 				}
 			}
 		}
+		else if(func.equalsIgnoreCase("email")) {
+			while(reader.readRecord()){ 
+				if(reader.get("email").equalsIgnoreCase(book)) {
+					result="false";
+					return result;
+				}
+			}
+			return "true";
+		}
 		
 		return "don't got it";
 	}
@@ -145,4 +154,3 @@ public class Database {
 	}
 	
 }
-
