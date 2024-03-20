@@ -2,6 +2,20 @@ package librarysystem;
 
 class FacultyBuilder extends UserDecorator {
 	
+	public void Courses() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void viewTextbooks() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void update(TextbookSubject t) {
+		// TODO Auto-generated method stub
+	}
+	
 	public void buildType(String t) {
 		user.setType(t);
 	}
@@ -16,20 +30,17 @@ class FacultyBuilder extends UserDecorator {
 
 	@Override
 	public void rentItem(Item i) {
-		// TODO Auto-generated method stub
-		
+		rentedItems.add(i);
 	}
 
 	@Override
 	public void subscribe(Newsletter n) {
-		// TODO Auto-generated method stub
-		
+		subscriptions.add(n);
 	}
 
 	@Override
 	public void cancel(Newsletter n) {
-		// TODO Auto-generated method stub
-		
+		subscriptions.remove(n);
 	}
 
 	@Override
@@ -40,8 +51,8 @@ class FacultyBuilder extends UserDecorator {
 
 	@Override
 	public void purchase(Item i) {
-		// TODO Auto-generated method stub
-		
+		purchasedItems.add(i);
+		getPrice(i.getName);
 	}
 	
 }
