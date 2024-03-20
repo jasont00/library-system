@@ -44,8 +44,8 @@ public class UserBuilder extends AbstractUser {
 	}
 	
 	@Override
-	public void purchase(Item i) {
+	public void purchase(Item i) throws Exception {
 		purchasedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName);
+		PaymentHandler.getPaymentHandler().getPrice(i.getName());
 	}
 }
