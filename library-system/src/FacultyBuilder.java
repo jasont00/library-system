@@ -2,9 +2,6 @@ package librarysystem;
 
 class FacultyBuilder extends UserDecorator {
 	
-	public FacultyBuilder(User u) {
-		super(u);	
-	}
 
 	public void Courses() { //added bahaviour for decorator pattern
 		// TODO Auto-generated method stub
