@@ -1,8 +1,10 @@
 package librarysystem;
 
-public class PaymentHandler extends Database{
+public class PaymentHandler{
 	private static PaymentHandler instance;
-	
+	public PaymentHandler(String s) {
+		super();
+	}
 	private PaymentHandler() {
 	}
 	
@@ -13,10 +15,13 @@ public class PaymentHandler extends Database{
 		return instance;
 	}
 	
-	public double getPrice(String name) throws Exception {
-		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
-		Double price = Double.valueOf(search(path, name, "pay"));
+	public double getPrice(String name) throws  Exception {
+		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
+		Double price = Double.valueOf(Database.getDatabase().search(path, name, "pay"));
 		return price;
 	}
+	
+	
+	
 	
 }
