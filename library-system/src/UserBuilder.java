@@ -2,10 +2,7 @@ package librarysystem;
 
 public class UserBuilder extends AbstractUser {
 	
-	public UserBuilder(User u) {
-		super(u);
-	}
-	
+
 	public void assemble() {
 		System.out.println("User Features");
 	}
