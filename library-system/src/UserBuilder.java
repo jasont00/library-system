@@ -11,16 +11,16 @@ public class UserBuilder extends AbstractUser {
 		// TODO Auto-generated method stub
 	}
 	
-	public void buildType(String t) {
-		user.setType(t);
+	public void buildType() {
+		user.setType("user");
 	}
 
-	public void buildEmail(String e) {
-		user.setEmail(e);
+	public void buildEmail() {
+		user.setEmail("usersEmail");
 	}
 
-	public void buildPassword(String p) {
-		user.setPassword(p);
+	public void buildPassword() {
+		user.setPassword("usersPassword");
 	}
 
 	@Override
