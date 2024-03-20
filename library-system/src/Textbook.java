@@ -4,8 +4,7 @@ package librarysystem;
  * Attribute courses is a list that contain all the associated courses that use the textbook
  */
 public class Textbook extends OnlineItem{
-	//ArrayList<Course> courses;
-
+	ArrayList<Course> courses;
 	public boolean available;
 	
 	public Textbook (String name, double price, String publisher) {
