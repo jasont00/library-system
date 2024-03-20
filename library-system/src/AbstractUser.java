@@ -20,22 +20,23 @@ public abstract class AbstractUser {
 	List<Newsletter> subscriptions = new ArrayList<>();
 	List<Item> purchasedItems = new ArrayList<>();
 	
-	public AbstractUser(User u) {
-		this.user = u;
-	}
-	
 	public void createNewUser() {
 		user = new User(); 
 	}
-
 	
 	public abstract void assemble();
 	
-	public abstract void buildType(String t);
+	public void buildType(String t) {
+		this.type = t;
+	}
 	
-	public abstract void buildEmail(String e);	
+	public void buildEmail(String e) {
+		this.email = e;
+	}
 	
-	public abstract void buildPassword(String p);
+	public void buildPassword(String p) {
+		this.password = p;
+	}
 	
 	public abstract void rentItem(Item i);
 	
