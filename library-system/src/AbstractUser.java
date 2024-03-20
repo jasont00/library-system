@@ -26,17 +26,11 @@ public abstract class AbstractUser {
 	
 	public abstract void assemble();
 	
-	public void buildType(String t) {
-		this.type = t;
-	}
+	public abstract void buildType();
 	
-	public void buildEmail(String e) {
-		this.email = e;
-	}
+	public abstract void buildEmail();
 	
-	public void buildPassword(String p) {
-		this.password = p;
-	}
+	public abstract void buildPassword();
 	
 	public abstract void rentItem(Item i);
 	
