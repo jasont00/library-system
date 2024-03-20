@@ -18,7 +18,13 @@ public abstract class AbstractUser {
 	public boolean rentEligible;
 	List<Item> rentedItems = new ArrayList<>();
 	List<Newsletter> subscriptions = new ArrayList<>();
-	public List<Item> purchasedItems = new ArrayList<>();
+	List<Item> purchasedItems = new ArrayList<>();
+	
+	public AbstractUser(User u) {
+		this.user = u;
+	}
+	
+	public abstract void assemble();
 	
 	public abstract void buildType(String t);
 	
@@ -39,4 +45,5 @@ public abstract class AbstractUser {
 	public User getUser() {
 		return user;
 	}
+	
 }
