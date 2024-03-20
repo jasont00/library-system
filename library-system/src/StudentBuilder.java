@@ -43,7 +43,7 @@ class StudentBuilder extends UserDecorator {
 	@Override
 	public void purchase(Item i) {
 		purchasedItems.add(i);
-		getPrice(i.getName);
+		PaymentHandler.getPaymentHandler.getPrice(i.getName);
 	}
 	
 }
