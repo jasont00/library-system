@@ -62,7 +62,7 @@ class FacultyBuilder extends UserDecorator {
 	@Override
 	public void purchase(Item i) {
 		purchasedItems.add(i);
-		PaymentHandler.getPaymentHandler.getPrice(i.getName);
+		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
 	
 }
