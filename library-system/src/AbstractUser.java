@@ -5,7 +5,7 @@ import java.util.List;
 
 /* AbstractUser and UserDirector is done.
  * Fix UserDecorator - look at slides
- * Requesting goes to admin. 
+ * Finish all methods in other classes, Requesting goes to admin, fix rentItem(see if its rentable, then rent it if it is).
  * Finish all methods in User, StudentBuilder, UserBuilder, FacultyBuilder
  * 
  */
