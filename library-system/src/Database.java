@@ -42,7 +42,7 @@ public class Database {
 		String result = " ";
 		reader.readHeaders();
 
-		//
+		//reading through the file and creating a string message of the info of the book
 		if(func.equalsIgnoreCase("search")) {
 			while(reader.readRecord()){ 
 				if(reader.get("name").equalsIgnoreCase("gatsby")) {
@@ -51,6 +51,7 @@ public class Database {
 				}
 			}
 		}
+		//getting the price of the book and searching for it using it's name
 		else if(func.equalsIgnoreCase("pay")) {
 			while(reader.readRecord()){ 
 				if(reader.get("name").equalsIgnoreCase("gatsby")) {
@@ -59,6 +60,7 @@ public class Database {
 				}
 			}
 		}
+		//finding if an email is already in the database
 		else if(func.equalsIgnoreCase("email")) {
 			while(reader.readRecord()){ 
 				if(reader.get("email").equalsIgnoreCase(book)) {
@@ -74,8 +76,9 @@ public class Database {
 	
 	public void updateitem(String path) throws Exception{
 		try {		
+			
 				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
-				//name,id,email,password
+				//this writes the headers into the file (name,id,email,password)
 				csvOutput.write("name");
 				csvOutput.write("id");
 		    	csvOutput.write("type");
@@ -87,6 +90,7 @@ public class Database {
 
 				// else assume that the file already has the correct header line
 				// write out a few records
+				//going through the arraylist and writing the info to the file
 				for(Item u: items){
 					if(u.getClass().equals(OnlineItem.class)) {
 						csvOutput.write(u.getName());
@@ -113,6 +117,7 @@ public class Database {
 				e.printStackTrace();
 			}
 	}
+	///basically the same thing as the updateitem one
 	public void updateuser(String path) throws Exception{
 		try {		
 				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
@@ -140,6 +145,7 @@ public class Database {
 			}
 	}
 	
+	//searches the csv for occurances of a book and sends back the amount of them
 	public int checkstock(String path, String name) throws IOException {
 		CsvReader reader = new CsvReader(path); 
 		int result=0;
