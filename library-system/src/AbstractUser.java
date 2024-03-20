@@ -24,6 +24,11 @@ public abstract class AbstractUser {
 		this.user = u;
 	}
 	
+	public void createNewPizzaProduct() {
+		user = new User(); 
+	}
+
+	
 	public abstract void assemble();
 	
 	public abstract void buildType(String t);
