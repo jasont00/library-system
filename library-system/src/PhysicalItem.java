@@ -10,6 +10,8 @@ public class PhysicalItem extends Item{
 	public PhysicalItem(String name, String type, double price, boolean rentable) {
 		super(name, type, price);
 		this.rentable = rentable;
+		Database.getDatabase().loaditem(this);
+
 	}
 	public PhysicalItem() {
 		super();
