@@ -11,10 +11,10 @@ class UserDirector {
 		return abstractUser.getUser();
 	}
 	
-	public void createUser(String t, String e, String p) {
+	public void createUser() {
 		abstractUser.createNewUser();
-		abstractUser.buildType(t);
-		abstractUser.buildEmail(e);
-		abstractUser.buildPassword(p);
+		abstractUser.buildType();
+		abstractUser.buildEmail();
+		abstractUser.buildPassword();
 	}
 }
