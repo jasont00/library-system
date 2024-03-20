@@ -23,16 +23,16 @@ class FacultyBuilder extends UserDecorator {
 		System.out.println("Faculty Features");
 	}
 	
-	public void buildType(String t) {
-		user.setType(t);
+	public void buildType() {
+		user.setType("faculty");
 	}
 
-	public void buildEmail(String e) {
-		user.setEmail(e);
+	public void buildEmail() {
+		user.setEmail("facultyEmail");
 	}
 
-	public void buildPassword(String p) {
-		user.setPassword(p);
+	public void buildPassword() {
+		user.setPassword("facultysPassword");
 	}
 
 	@Override
