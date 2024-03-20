@@ -50,7 +50,7 @@ class User {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void purchase(Item i) {
 		purchasedItems.add(i);
