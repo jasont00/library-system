@@ -15,6 +15,7 @@ public class Textbook extends OnlineItem{
 	}
 	
 	public void open() {
-		//TODO: empty method
+		// This method should display the textbook contents
+		System.out.println("(Display textbook contents here)");
 	}
 }

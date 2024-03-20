@@ -21,6 +21,10 @@ public abstract class Item {
 		super();
 	}
 	
+	
+	/*
+	 * getters and setters for the attributes
+	 */
 	public int getId() {
 		return id;
 	}

@@ -13,8 +13,10 @@ public class OnlineItem extends Item{
 	}
 	
 	public void open() {
-		//TODO: empty method
+		// This method should display the book contents
+		System.out.println("(Display book contents here)");
 	}
+	
 	@Override
 	public String toString() {
 		return "PhysicalItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";
