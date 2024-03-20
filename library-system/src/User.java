@@ -22,14 +22,18 @@ class User {
 		this.type = s;
 	}
 
-	public void setEmail(String s) {
-		this.email = s;
-		
+	public void setEmail(String s) throws Exception {
+		if(RegistrationHandler.getRegistrationHandler().verifyEmail(s)) {
+			this.email = s;
+		}		
 	}
 
 	public void setPassword(String s) {
-		this.password = s;
+		if(RegistrationHandler.getRegistrationHandler().checkStrongPW(s)) {
+			this.password = s;
+		}
 	}
+	
 	
 	@Override
 	public void rentItem(Item i) {
