@@ -24,7 +24,7 @@ public abstract class AbstractUser {
 		this.user = u;
 	}
 	
-	public void createNewPizzaProduct() {
+	public void createNewUser() {
 		user = new User(); 
 	}
 
