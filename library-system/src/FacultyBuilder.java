@@ -6,17 +6,17 @@ class FacultyBuilder extends UserDecorator {
 		super(u);	
 	}
 
-	public void Courses() {
+	public void Courses() { //added bahaviour for decorator pattern
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public void viewTextbooks() {
+	public void viewTextbooks() { //added bahaviour for decorator pattern
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public void update(TextbookSubject t) {
+	public void update(TextbookSubject t) { //added bahaviour for decorator pattern
 		// TODO Auto-generated method stub
 	}
 	
