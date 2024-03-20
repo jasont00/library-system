@@ -8,10 +8,15 @@ public class OnlineItem extends Item{
 	public OnlineItem(String name, String type, Double price, String publisher) {
 		super(name, type, price);
 		this.publisher = publisher;
+		Database.getDatabase().loaditem(this);
+
 	}
 	
 	public void open() {
 		//TODO: empty method
 	}
-	
+	@Override
+	public String toString() {
+		return "PhysicalItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";
+	}
 }
