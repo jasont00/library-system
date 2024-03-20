@@ -16,5 +16,7 @@ class UserDirector {
 		abstractUser.buildType();
 		abstractUser.buildEmail();
 		abstractUser.buildPassword();
+		Database.getDatabase().loaduser(getUser());
+
 	}
 }
