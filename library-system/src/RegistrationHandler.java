@@ -14,14 +14,33 @@ private static RegistrationHandler instance;
 		return instance;
 	}
 	
-	public boolean verifyEmail(String email) {
+	public boolean verifyEmail(String email) throws Exception {
+		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
+
 		if(email.contains("@")) {
-			return true;
+			if(Database.getDatabase().search(path, email, "email").equalsIgnoreCase("true")) {
+				return true;
+			}
 		}
 		return false;
 	}
-	public boolean checkStringPW(String pw) {
-		
+	public boolean checkStrongPW(String pw) {
+		boolean hasupper=false;
+		boolean hasnumber=false;
+		if(pw.length()>=6) {
+			for(int i=0;i<pw.length();i++) {
+				if(Character.isUpperCase(pw.charAt(i))) {
+					 hasupper=true;
+				}
+				else if(Character.isDigit(pw.charAt(i))) {
+					 hasnumber=true;
+				}
+			}
+			
+		}
+		if(hasnumber==true && hasupper==true) {
+			return true;
+		}
 		return false;
 	}
 	
