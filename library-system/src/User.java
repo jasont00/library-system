@@ -7,7 +7,7 @@ import java.util.*;
 
 class User {
 	
-	//Finish the methods view textbook and view courses, and update.
+	//Finish the methods view courses, and update.
 	
 	private String type = " ";
 	private String email = " ";
