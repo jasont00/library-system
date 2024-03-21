@@ -7,7 +7,7 @@ import java.util.*;
 
 class User {
 	
-	//Finish the methods view courses, and update.
+	//Finish the methods view courses (which will be implemented in the gui), and update.
 	//update the requestItem with correct admin.createItem
 	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
