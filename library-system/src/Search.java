@@ -58,19 +58,19 @@ public Item filterSearch(String key, String itemType) {
 		}
 		
 		if (Database.getDatabase().checkStock(key)>1) {
-			ArrayList<String> similarList = checkSimilar(key); 
+			ArrayList<Item> similarList = checkSimilar(key); 
 			//return options
 		}
 				
  	
 	}
 	
-	public ArrayList<String> checkSimilar(String key){
+	public ArrayList<Item> checkSimilar(String key){
 	//words that are less than 3-5 letters different than key is considered "similar"
 		ArrayList<String> similarItem = new ArrayList<String>;
 		for (Item i: Database.getDatabase()).item) //items is a list in the library database
 			if(levenshteinDistance(key, i.getName()) <= 5) {
-				similarItem.add(word); 
+				similarItem.add(i); 
 			}
 		return similarItem;	
 		
