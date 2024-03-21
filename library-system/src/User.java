@@ -62,8 +62,18 @@ class User {
 	}
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
-		// TODO Auto-generated method stub
-	}
+        if(this.type == "student" || this.type == "faculty") {
+            for(Item i : ownedItems) {
+                if(i.getClass().equals(Textbook.class)) {
+                    System.out.println(i.getName());
+                }
+            }
+        }
+        else
+        {
+            System.out.println("Cannot view textbook");
+        }
+    }
 	
 	public void viewCourses() { //Only Faculty type can use this
 		// TODO Auto-generated method stub
@@ -125,7 +135,7 @@ class User {
 		admin.createItem(i);
 	}
 	
-	public void purchase(Item i) throws Exception{
+	public void purchase(Item i) {
 		ownedItems.add(i);
 		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
