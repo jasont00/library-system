@@ -32,9 +32,9 @@ class User {
 		int overdueCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
 		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			i.dueDate = LocalDate.parse(entry.getValue(), dtf);
-			i.daysUntilDue = LocalDate.now().until(i.dueDate).getDays();
-			if(i.daysUntilDue<0){
+			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
+			if(daysUntilDue<0){
 				overdueCount++;
 			}
 		}
@@ -45,9 +45,9 @@ class User {
 		int lostCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
 		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			i.dueDate = LocalDate.parse(entry.getValue(), dtf);
-			i.daysUntilDue = LocalDate.now().until(i.dueDate).getDays();
-			if(i.daysUntilDue<=-15){
+			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
+			if(daysUntilDue<=-15){
 				lostCount++;
 			}
 		}
