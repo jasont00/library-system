@@ -13,10 +13,10 @@ class User {
 	Admin admin = new Admin();
 	public boolean rentEligible;
 	List<Item> OwnedItems = new ArrayList<>();
+	List<PhysicalItem> rentedItems = new ArrayList<>();
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
 		// TODO Auto-generated method stub
-		
 	}
 	
 	public void viewCourses() { //Only Faculty type can use this
@@ -55,14 +55,17 @@ class User {
 		return rentEligible;
 	}
 	
-	public void rentItem(PhysicalItem i) {
-		if(i.getRentable() == true) {
-			OwnedItems.add(i);
-		}
-		else {
-			System.out.println("This item is not rentable");
-		}
-	}
+	public void rentItem(PhysicalItem i, User user) {
+        if(i.getRentable() == true && user.rentedItems.size<10 ) {
+            rentedItems.add(i);
+        }
+        else if (i.getRentable() == false){
+            System.out.println("This item is not rentable");
+        }
+        else {
+            System.out.println("You have too many books!"); 
+        }
+    }
 	
 	public void subscribe(Newsletter n) {
 		OwnedItems.add(n);
