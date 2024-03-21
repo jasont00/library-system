@@ -16,8 +16,7 @@ public class PaymentHandler{
 	}
 	
 	public double getPrice(String name) throws  Exception {
-		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
-		Double price = Double.valueOf(Database.getDatabase().search(path, name, "pay"));
+		Double price = Double.valueOf(Database.getDatabase().search(name, "pay"));
 		return price;
 	}
 	
