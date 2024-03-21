@@ -142,8 +142,8 @@ class User {
 		ownedItems.remove(n);
 	}
 
-	public void requestItem(Item i) {
-		admin.createItem(i.name, i.type, i.publisher, i.price, i.rentable);
+	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {
+		admin.createItem(name, type, publisher, price, rentable);
 	}
 	
 	public void purchase(Item i)  throws Exception {
