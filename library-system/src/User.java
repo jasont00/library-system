@@ -8,6 +8,7 @@ import java.util.*;
 class User {
 	
 	//Finish the methods view courses, and update.
+	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
 	
 	private String type = " ";
