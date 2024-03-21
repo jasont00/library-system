@@ -16,7 +16,7 @@ public class Course {
 		textbooks = new ArrayList<String>();
 	}
 	
-	public ArrayList<String> getTextbooks() {
+	public ArrayList<Textbook> getTextbooks() {
 		return textbooks;
 	}
 	
