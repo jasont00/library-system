@@ -13,9 +13,15 @@ public class PhysicalItem extends Item{
 		Database.getDatabase().loaditem(this);
 
 	}
+	
 	public PhysicalItem() {
 		super();
 	}
+	
+	public boolean getRentable() {
+		return rentable;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price + "]";

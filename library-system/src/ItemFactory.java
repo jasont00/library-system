@@ -1,5 +1,7 @@
 package librarysystem;
 
+import com.group.librarysystemgui.Model.Item;
+
 /* Concrete factory class responsible for creating the concrete subsclasses of the Item class.
  * *note: should publisher be universal for all items? should online items have ids?
  */
@@ -8,8 +10,10 @@ public class ItemFactory {
 		if (type.equalsIgnoreCase("onlineitem")) {
 			return new OnlineItem(name, type, price, publisher);
 		}
-		else if (type.equalsIgnoreCase("physicalitem")) {
-			return new PhysicalItem(name, type, price, rentable);
+		else if (type.equalsIgnoreCase("physicalitem")) {	// automatically stores the item in the physicalItemRepo
+			Item item = new PhysicalItem(name, type, price, rentable);
+			PhysicalItemRepo.addItem(item.getId(), item);
+			return item;
 		}
 		else if (type.equalsIgnoreCase("textbook")) {
 			return new Textbook(name, type, price, publisher);
