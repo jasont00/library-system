@@ -45,7 +45,7 @@ public class Database {
 		//reading through the file and creating a string message of the info of the book
 		if(func.equalsIgnoreCase("search")) {
 			while(reader.readRecord()){ 
-				if(reader.get("name").equalsIgnoreCase("gatsby")) {
+				if(reader.get("name").equalsIgnoreCase(book)) {
 					result = "Search result: User [name=" + reader.get("name") + ", id=" + Integer.valueOf(reader.get("id")) + ", type=" + reader.get("type") + ", price=" + Double.valueOf(reader.get("price"))+"]";
 					return result;
 				}
@@ -54,7 +54,7 @@ public class Database {
 		//getting the price of the book and searching for it using it's name
 		else if(func.equalsIgnoreCase("pay")) {
 			while(reader.readRecord()){ 
-				if(reader.get("name").equalsIgnoreCase("gatsby")) {
+				if(reader.get("name").equalsIgnoreCase(book)) {
 					result = (reader.get("price"));
 					return result;
 				}
