@@ -5,17 +5,26 @@ import java.util.List;
 
 class User {
 	
-	private String type = "";
-	private String email = "";
-	private String password = "";
+	//Finish the methods request, view textbook and courses, and update.
+	
+	private String type = " ";
+	private String email = " ";
+	private String password = " ";
 	public boolean rentEligible;
-	List<Item> rentedItems = new ArrayList<>();
+	
+	
+	List<PhysicalItem> rentedItems = new ArrayList<>();
 	List<Newsletter> subscriptions = new ArrayList<>();
 	public List<Item> purchasedItems = new ArrayList<>();
 	
-	public void viewTextbooks() {
+	
+	public void viewTextbooks() { //Only Student and Faculty type can use this method
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void viewCourses() { //Only Faculty type can use this
+		// TODO Auto-generated method stub
 	}
 
 	public void setType(String s) {
@@ -34,47 +43,50 @@ class User {
 		}
 	}
 	
-	
-	@Override
-	public void rentItem(Item i) {
-		rentedItems.add(i);
+	public String getType() {
+		return this.type;
 	}
 	
-	@Override
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+
+	public boolean getRE() {
+		return rentEligible;
+	}
+	
+	public void rentItem(PhysicalItem i) {
+		if(PhysicalItem.getRentable() == true) {
+			rentedItems.add(i);
+		}
+		else {
+			System.out.println("This item is not rentable");
+		}
+	}
+	
 	public void subscribe(Newsletter n) {
 		subscriptions.add(n);
 	}
 
-	@Override
 	public void cancel(Newsletter n) {
 		subscriptions.remove(n);
 	}
 
 	public void requestItem(String s) {
 		// TODO Auto-generated method stub
-		
 	}
 	
-	public void purchase(Item i) throws Exception {
+	public void purchase(Item i) {
 		purchasedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName());
+		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
-
-	public String getType() {
+	
+	public void update(TextbookSubject t) { //Only Faculty type can use this method
 		// TODO Auto-generated method stub
-		return type;
 	}
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return email;
-	}
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return password;
-	}
-
-	public boolean getRE() {
-		// TODO Auto-generated method stub
-		return rentEligible;
-	}
+	
 }
