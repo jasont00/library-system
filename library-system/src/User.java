@@ -136,7 +136,7 @@ class User {
 		admin.createItem(i);
 	}
 	
-	public void purchase(Item i) {
+	public void purchase(Item i)  throws Exception {
 		ownedItems.add(i);
 		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
