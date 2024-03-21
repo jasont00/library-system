@@ -11,10 +11,11 @@ class UserDirector {
 		return userBuilder.getUser();
 	}
 	
-	public void createUser() {
+	public void createUser() throws Exception {
 		userBuilder.createNewUser();
 		userBuilder.buildType();
 		userBuilder.buildEmail();
 		userBuilder.buildPassword();
+		Database.getDatabase().loaduser(getUser());
 	}
 }
