@@ -18,7 +18,7 @@ private static RegistrationHandler instance;
 		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
 
 		if(email.contains("@")) {
-			if(Database.getDatabase().search(path, email, "email").equalsIgnoreCase("true")) {
+			if(Database.getDatabase().search(email, "email").equalsIgnoreCase("true")) {
 				return true;
 			}
 		}
