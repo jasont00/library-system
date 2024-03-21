@@ -15,8 +15,11 @@ public class OnlineItem extends Item{
 		System.out.println("(Display book contents here)");
 	}
 	
+	public String getPublisher() {
+		return publisher;
+	}
 	@Override
 	public String toString() {
-		return "PhysicalItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";
+		return "OnlineItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";
 	}
 }
