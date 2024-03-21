@@ -9,8 +9,9 @@ public class Admin {
 	public void disableItem(PhysicalItem item) {
 		item.rentable = false; 		
 	}
-	public void createItem(String name, String type, double price, String publisher, boolean rentable) {	
-		ItemFactory.getItem(name, type, price, publisher,  rentable); 
+	public void createItem(String ctype, String name, String type, double price, String publisher, boolean rentable) {	
+		ItemFactory factory = new ItemFactory();
+		factory.getItem(ctype, name, type, price, publisher, rentable); 
 	}
 	public void addUser(String type, String email, String password) {
 		
