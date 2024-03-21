@@ -2,17 +2,23 @@ package library;
 
 public class ExternalItem {
 	
-	double discount = 1;
+	double discount;
 	double price; 
+
+	// constructor takes discount (0-1) and original price before discount
+	public ExternalItem(double d, double p) {
+		discount = d;
+		price = p;
+	}
 	
 	public void setDiscount(double discount) {
 		this.discount = discount; 
 	}
-	public void setExternalitemPrice(double price) {
-		this.price = price*this.discount; 
+
+	// returns discounted price
+	public double getPrice() {
+		return this.price * this.discount;
 	}
-
-
 }
 
 
