@@ -149,7 +149,7 @@ class User {
 	
 	public void purchase(Item i)  throws Exception {
 		ownedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName);
+		PaymentHandler.getPaymentHandler().getPrice(i.getName());
 	}
 	
 	public void update(TextbookSubject t) { //Only Faculty type can use this method
