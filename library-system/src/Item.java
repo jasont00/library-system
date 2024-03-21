@@ -14,7 +14,7 @@ public abstract class Item {
 	String type;
 	double price;
 	LocalDate dueDate;
-	long daysUntilDue
+	long daysUntilDue;
 	
 	public Item(String name, String type, double price) {
 		id = ++IDS;
