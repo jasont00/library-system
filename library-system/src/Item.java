@@ -56,4 +56,12 @@ public abstract class Item {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public String getPublisher() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public boolean getRentable() {
+		// TODO Auto-generated method stub
+		return (Boolean) null;
+	}
 }
