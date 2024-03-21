@@ -17,6 +17,7 @@ class User {
 	Admin admin = new Admin();
 	public boolean rentEligible;
 	List<Item> ownedItems = new ArrayList<>();
+	List<Course> courses = new ArrayList<>();
 //	List<PhysicalItem> rentedItems = new ArrayList<>();
 
 	// Key is the item rented, Value is the duedate
@@ -63,6 +64,19 @@ class User {
 		return 50*countOverDue();
 	}
 	
+	public void addCourse(Course c) { //Only student can add courses, textbooks from the course will be added to ownedItems list
+		courses.add(c);
+		for(Textbook t : c.getTextbooks()) {
+			ownedItems.add(t);
+		}
+	}
+	
+	public void viewCourses() { //Only Faculty type can use this
+		for(Course c : courses) {
+			c.printDetails();
+		}
+	}
+	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
         if(this.type == "student" || this.type == "faculty") {
             for(Item i : ownedItems) {
@@ -76,10 +90,6 @@ class User {
             System.out.println("Cannot view textbook");
         }
     }
-	
-	public void viewCourses() { //Only Faculty type can use this
-		// TODO Auto-generated method stub
-	}
 
 	public void setType(String s) {
 		this.type = s;
@@ -132,7 +142,6 @@ class User {
 	
 	public void unRentItem(PhysicalItem i) {
 		rentedItems.remove(i);
-		i.setRented(false);
 	}
 	
 	public void subscribe(Newsletter n) {
@@ -143,21 +152,17 @@ class User {
 		ownedItems.remove(n);
 	}
 
-	public void requestItem(String ctype, String name, String type, double price, String publisher, boolean rentable) {
-		admin.createItem(ctype, name, type, price, publisher, rentable);
+	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {
+		admin.createItem(name, type, publisher, price, rentable);
 	}
 	
 	public void purchase(Item i)  throws Exception {
 		ownedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName());
+		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
 	
 	public void update(TextbookSubject t) { //Only Faculty type can use this method
 		// TODO Auto-generated method stub
-	}
-	@Override
-	public String toString() {
-		return "User [email=" + email + ", type=" + type + ", password=" + password + "]";
 	}
 	
 }
