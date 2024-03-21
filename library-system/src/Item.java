@@ -1,7 +1,5 @@
 package librarysystem;
 import javax.swing.plaf.synth.SynthToolTipUI;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /* Abstract class describing an Item object. It defines several attributes which are inherited by all subclasses of Item.
 *
@@ -13,8 +11,7 @@ public abstract class Item {
 	String name;
 	String type;
 	double price;
-	LocalDate dueDate;
-	long daysUntilDue;
+
 	
 	public Item(String name, String type, double price) {
 		id = ++IDS;
