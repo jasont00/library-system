@@ -8,7 +8,6 @@ import java.util.*;
 class User {
 	
 	//Finish the methods view courses, and update.
-	//update the requestItem with correct admin.createItem
 	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
 	
@@ -135,7 +134,7 @@ class User {
 	}
 
 	public void requestItem(Item i) {
-		admin.createItem(i);
+		admin.createItem(i.name, i.type, i.price, i.publisher, i.rentable);
 	}
 	
 	public void purchase(Item i)  throws Exception {
