@@ -65,15 +65,25 @@ class User {
 	}
 	
 	public void addCourse(Course c) { //Only student can add courses, textbooks from the course will be added to ownedItems list
-		courses.add(c);
-		for(Textbook t : c.getTextbooks()) {
-			ownedItems.add(t);
+		if(this.type == "student") {
+			courses.add(c);
+			for(Textbook t : c.getTextbooks()) {
+				ownedItems.add(t);
+			}
+		}
+		else {
+			System.out.println("Cannot add course");
 		}
 	}
 	
 	public void viewCourses() { //Only Faculty type can use this
-		for(Course c : courses) {
-			c.printDetails();
+		if(this.type == "faculty") {
+			for(Course c : courses) {
+				c.printDetails();
+			}
+		}
+		else {
+			System.out.println("Cannot view courses");
 		}
 	}
 	
