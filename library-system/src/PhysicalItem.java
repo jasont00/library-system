@@ -6,11 +6,13 @@ package librarysystem;
  */
 public class PhysicalItem extends Item{
 	boolean rentable;
+	boolean rented;
 	
 	public PhysicalItem(String name, String type, double price, boolean rentable) {
 		super(name, type, price);
 		this.rentable = rentable;
 		Database.getDatabase().loaditem(this);
+		rented = false;
 
 	}
 	
@@ -20,6 +22,14 @@ public class PhysicalItem extends Item{
 	
 	public boolean getRentable() {
 		return rentable;
+	}
+	
+	public boolean getRented() {
+		return rented;
+	}
+	
+	public void setRented(boolean b) {
+		rented = b;
 	}
 	
 	@Override
