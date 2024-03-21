@@ -9,7 +9,9 @@ public class ItemFactory {
 	public Item getItem(String name, String type, double price, String publisher, boolean rentable) {
 		
 		if (type.equalsIgnoreCase("onlineitem")) {
-			return new OnlineItem(name, type, price, publisher);
+			Item item = new OnlineItem(name, type, price, publisher);
+			Database.getDatabase().loaditem(item);
+			return item;
 		}
 		
 		else if (type.equalsIgnoreCase("physicalitem")) {	// automatically stores the item in the physicalItemRepo
