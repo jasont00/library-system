@@ -22,7 +22,7 @@ class User {
 //	List<PhysicalItem> rentedItems = new ArrayList<>();
 
 	// Key is the item rented, Value is the duedate
-	HashMap<PhysicalItem, LocalDate> rentedItems = new HashMap<>();
+	HashMap<PhysicalItem, String> rentedItems = new HashMap<>();
 
 	/**
 	 * - make a due date which is calculated using current date
@@ -34,7 +34,7 @@ class User {
 	public int countOverDue(){
 		int overdueCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
-		for (Map.Entry<PhysicalItem, LocalDate> entry : rentedItems.entrySet()) {
+		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
 			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
 			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
 			if(daysUntilDue<0){
@@ -47,7 +47,7 @@ class User {
 	public int countLost(){
 		int lostCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
-		for (Map.Entry<PhysicalItem, LocalDate> entry : rentedItems.entrySet()) {
+		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
 			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
 			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
 			if(daysUntilDue<=-15){
