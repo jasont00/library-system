@@ -4,7 +4,7 @@ package librarysystem;
  * *note: should publisher be universal for all items? should online items have ids?
  */
 public class ItemFactory {
-	public Item getItem(String c, String name, String type, double price, String publisher, boolean rentable) {
+	public Item getItem(String c, String name, String type, double price, String publisher, boolean rentable) throws Exception{
 		if (c.equalsIgnoreCase("onlineitem")) {
 			return new OnlineItem(name, type, price, publisher);
 		}
