@@ -9,10 +9,18 @@ public class Admin {
 	public void disableItem(PhysicalItem item) {
 		item.rentable = false; 		
 	}
-	public void createItem(Item item) {
-		ItemFactory(item.name, item.type, item.price, item.publisher, item.boolean); 	
+	public void createItem(String name, String type, double price, String publisher, boolean rentable) {	
+		ItemFactory.getItem(name, type, price, publisher,  rentable); 
 	}
-	public void addUser(User user) {
-		Database.users.add(user); 	
+	public void addUser(String type, String email, String password) {
+		
+		UserBuilder abs = new basicUserBuilder();
+      		UserDirector direc = new UserDirector();
+		direc.setUserBuilder(abs);
+		direc.createUser();
+		User use = direc.getUser();
+		use.setEmail(email);
+		use.setPassword(password);
+		use.setType(type);
 	}
 }
