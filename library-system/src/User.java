@@ -7,9 +7,7 @@ import java.util.*;
 
 class User {
 	
-	//Finish the methods view courses, and update.
-	//Fix renting an item with put since its a hashmap
-	//Maybe add duedate variable in item class 
+	//Finish the methods view textbook and view courses, and update.
 	
 	private String type = " ";
 	private String email = " ";
@@ -20,7 +18,7 @@ class User {
 //	List<PhysicalItem> rentedItems = new ArrayList<>();
 
 	// Key is the item rented, Value is the duedate
-	HashMap<PhysicalItem, String> rentedItems = new HashMap<>();
+	HashMap<PhysicalItem, LocalDate> rentedItems = new HashMap<>();
 
 	/**
 	 * - make a due date which is calculated using current date
@@ -33,9 +31,9 @@ class User {
 		int overdueCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
 		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
-			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
-			if(daysUntilDue<0){
+			i.dueDate = LocalDate.parse(entry.getValue(), dtf);
+			i.daysUntilDue = LocalDate.now().until(i.dueDate).getDays();
+			if(i.daysUntilDue<0){
 				overdueCount++;
 			}
 		}
@@ -46,9 +44,9 @@ class User {
 		int lostCount = 0;
 		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
 		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
-			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
-			if(daysUntilDue<=-15){
+			i.dueDate = LocalDate.parse(entry.getValue(), dtf);
+			i.daysUntilDue = LocalDate.now().until(i.dueDate).getDays();
+			if(i.daysUntilDue<=-15){
 				lostCount++;
 			}
 		}
@@ -105,7 +103,7 @@ class User {
 	
 	public void rentItem(PhysicalItem i, User user) {
         if(i.getRentable() == true && user.rentedItems.size()<10 ) {
-            rentedItems.add(i);
+            rentedItems.add(i, i.dueDate);
         }
         else if (i.getRentable() == false){
             System.out.println("This item is not rentable");
@@ -135,8 +133,5 @@ class User {
 	public void update(TextbookSubject t) { //Only Faculty type can use this method
 		// TODO Auto-generated method stub
 	}
-	@Override
-	public String toString() {
-		return "User [email=" + email + ", password=" + password + ", type=" + type + "]";
-	}
+	
 }
