@@ -7,6 +7,8 @@ package librarysystem;
 public class PhysicalItem extends Item{
 	boolean rentable;
 	boolean rented;
+	LocalDate dueDate;
+	long daysUntilDue;
 	
 	public PhysicalItem(String name, String type, double price, boolean rentable) {
 		super(name, type, price);
