@@ -13,7 +13,7 @@ public class Admin {
 		ItemFactory factory = new ItemFactory();
 		factory.getItem(ctype, name, type, price, publisher, rentable); 
 	}
-	public void addUser(String type, String email, String password) {
+	public void addUser(String type, String email, String password)throws Exception {
 		
 		UserBuilder abs = new basicUserBuilder();
       		UserDirector direc = new UserDirector();
