@@ -10,11 +10,12 @@ public class PhysicalItem extends Item{
 	LocalDate dueDate;
 	long daysUntilDue;
 	
-	public PhysicalItem(String name, String type, double price, boolean rentable) {
+	public PhysicalItem(String name, String type, double price, boolean rentable) throws Exception {
 		super(name, type, price);
 		this.rentable = rentable;
 		rented = false;
 		Database.getDatabase().loaditem(this);
+		Database.getDatabase().updateitem();
 		PhysicalItemRepo.addItem(this);
 	}
 	
