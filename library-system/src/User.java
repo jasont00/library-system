@@ -113,17 +113,23 @@ class User {
 		return rentEligible;
 	}
 	
-	public void rentItem(PhysicalItem i, User user) {
-	        if(i.getRentable() == true && user.rentedItems.size()<10 ) {
+	public void rentItem(PhysicalItem i) {
+		if(i.rented == true) {
+			System.out.println("This item is already rented");
+		}
+		
+		else if(i.getRentable() == true && rentedItems.size()<10 ) {
 	            rentedItems.put(i, i.dueDate);
-	        }
+	            i.setRented(true);
+        	}
 	        else if (i.getRentable() == false){
 	            System.out.println("This item is not rentable");
 	        }
 	        else {
 	            System.out.println("You have too many books!"); 
 	        }
-   	}	
+   	}
+	
 	public void unRentItem(PhysicalItem i) {
 		rentedItems.remove(i);
 	}
