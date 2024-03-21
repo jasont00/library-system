@@ -132,6 +132,7 @@ class User {
 	
 	public void unRentItem(PhysicalItem i) {
 		rentedItems.remove(i);
+		i.setRented(false);
 	}
 	
 	public void subscribe(Newsletter n) {
@@ -142,8 +143,8 @@ class User {
 		ownedItems.remove(n);
 	}
 
-	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {
-		admin.createItem(name, type, publisher, price, rentable);
+	public void requestItem(String ctype, String name, String type, double price, String publisher, boolean rentable) {
+		admin.createItem(ctype, name, type, price, publisher, rentable);
 	}
 	
 	public void purchase(Item i)  throws Exception {
