@@ -42,22 +42,19 @@ public class Search {
 	
 	
 public Item filterSearch(String key, String itemType) {
-		Item item = new Item(); 
-		item.name = key; 
-		item.type = itemType; 
 		
-		if (Database.getDatabase().checkStock(item)> 0) {
+		if (Database.getDatabase().checkstock(key)> 0) {
 			return Item.getItem(key); 
 		}
 		else return null;  
 	}
 	public void search(String key) {
 		
-		if (Database.getDatabase().checkStock(key)>0) {
+		if (Database.getDatabase().checkstock(key)>0) {
 			Database.getDatabase().search(key, "search"); 
 		}
 		
-		if (Database.getDatabase().checkStock(key)>1) {
+		if (Database.getDatabase().checkstock(key)>1) {
 			ArrayList<Item> similarList = checkSimilar(key); 
 			//return options
 		}
