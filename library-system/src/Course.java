@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Course {
 	String name;
 	String code;
-	ArrayList<String> textbooks;
+	ArrayList<Textbook> textbooks;
 	
 	public Course(String n, String c) {
 		name = n;
