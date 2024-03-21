@@ -9,7 +9,7 @@ public abstract class UserBuilder {
 	
 	public abstract void buildType();
 	
-	public abstract void buildEmail();
+	public abstract void buildEmail() throws Exception;;
 	
 	public abstract void buildPassword();
 
