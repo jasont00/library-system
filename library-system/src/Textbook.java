@@ -5,22 +5,17 @@ package librarysystem;
  */
 
 public class Textbook extends OnlineItem{
-	String name;
-	String code;
-	ArrayList<Textbook> textbooks;
+	public boolean available;
 	
-	public Course(String n, String c) {
-		name = n;
-		code = c;
-		
-		textbooks = new ArrayList<Textbook>();
+	public Textbook (String name, double price, String publisher) {
+		super(name, "textbook", price, publisher);
+	}
+	public Textbook (String name, String type, double price, String publisher) {
+		super(name, "textbook", price, publisher);
 	}
 	
-	public ArrayList<Textbook> getTextbooks() {
-		return textbooks;
-	}
-	
-	public void addTextbook(Textbook t) {
-		textbooks.add(t);
+	public void open() {
+		// This method should display the textbook contents
+		System.out.println("(Display textbook contents here)");
 	}
 }
