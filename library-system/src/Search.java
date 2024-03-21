@@ -54,7 +54,7 @@ public Item filterSearch(String key, String itemType) {
 	public void search(String key) {
 		
 		if (Database.getDatabase().checkStock(key)>0) {
-			Database.getDatabase().search(key); 
+			Database.getDatabase().search(key, "search"); 
 		}
 		
 		if (Database.getDatabase().checkStock(key)>1) {
