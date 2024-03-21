@@ -12,7 +12,6 @@ public class PhysicalItem extends Item{
 		super(name, type, price);
 		this.rentable = rentable;
 		Database.getDatabase().loaditem(this);
-		rented = false;
 		PhysicalItemRepo.addItem(this);
 	}
 	
