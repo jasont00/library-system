@@ -7,7 +7,9 @@ import java.util.*;
 
 class User {
 	
-	//Finish the methods view textbook and view courses, and update.
+	//Finish the methods view courses, and update.
+	//Fix renting an item with put since its a hashmap
+	//Maybe add duedate variable in item class 
 	
 	private String type = " ";
 	private String email = " ";
