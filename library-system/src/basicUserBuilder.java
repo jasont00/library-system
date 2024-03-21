@@ -7,7 +7,7 @@ class basicUserBuilder extends UserBuilder {
 		user.setType("user");
 	}
 
-	public void buildEmail() {
+	public void buildEmail() throws Exception{
 		user.setEmail("usersEmail");
 	}
 
