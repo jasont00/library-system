@@ -7,18 +7,18 @@ public class PhysicalItemRepo {
 	static HashMap<String, Integer> itemOccurrences = new HashMap<String, Integer>();				// stores quantity of items with the same name
 	
 	public static HashMap<Integer, Item> getInventory() {
-		return stock;
+		return inventory;
 	}
 	
 	public static void addItem(PhysicalItem item) {
-		stock.put(item.getId(), item);
+		inventory.put(item.getId(), item);
 		
 		String itemName = item.getName();	// account for occurrences of each item with the same name
 		itemOccurrences.put(itemName, itemOccurrences.getOrDefault(itemName, 0) + 1)
 	}
 	
 	public static int countQuantity(String name) {		// should return the number of occurrences of an item in the inventory (if they have the same name)
-		return itemOccurrences.getOrDefault(itemName, 0);
+		return itemOccurrences.getOrDefault(name, 0);
 	}
 	
 }
