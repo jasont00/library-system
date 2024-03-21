@@ -92,7 +92,7 @@ public class Database {
 				// write out a few records
 				//going through the arraylist and writing the info to the file
 				for(Item u: items){
-					if(u.getClass().equals(OnlineItem.class)) {
+					if(u.getClass().equals(OnlineItem.class) || u.getClass().equals(Newsletter.class)|| u.getClass().equals(Textbook.class)) {
 						csvOutput.write(u.getName());
 						csvOutput.write(String.valueOf(u.getId()));
 						csvOutput.write(u.getType());
