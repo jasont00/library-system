@@ -56,7 +56,7 @@ class User {
 	}
 	
 	public void rentItem(PhysicalItem i) {
-		if(PhysicalItem.getRentable() == true) {
+		if(i.getRentable() == true) {
 			OwnedItems.add(i);
 		}
 		else {
