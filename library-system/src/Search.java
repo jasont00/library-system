@@ -41,10 +41,10 @@ public class Search {
 //	--> can do it through Test Cases till the GUI is implemented which then this would prompt user for result through sys.out
 	
 	
-public Item filterSearch(String key, String itemType) {
+public String filterSearch(String key, String itemType) {
 		
 		if (Database.getDatabase().checkstock(key)> 0) {
-			return Item.getItem(key); 
+			return key
 		}
 		else return null;  
 	}
