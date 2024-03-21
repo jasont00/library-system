@@ -6,15 +6,15 @@ import com.group.librarysystemgui.Model.Item;
  * *note: should publisher be universal for all items? should online items have ids?
  */
 public class ItemFactory {
-	public Item getItem(String name, String type, double price, String publisher, boolean rentable) {
+	public Item getItem(String class, String name, String type, double price, String publisher, boolean rentable) {
 		
-		if (type.equalsIgnoreCase("onlineitem")) {
+		if (class.equalsIgnoreCase("onlineitem")) {
 			Item item = new OnlineItem(name, type, price, publisher);
 			Database.getDatabase().loaditem(item);
 			return item;
 		}
 		
-		else if (type.equalsIgnoreCase("physicalitem")) {	// automatically stores the item in the physicalItemRepo
+		else if (class.equalsIgnoreCase("physicalitem")) {	// automatically stores the item in the physicalItemRepo
 			Item item = new PhysicalItem(name, type, price, rentable);
 			
 			if (PhysicalItemRepo.itemOccurrences.get(item.getName()) > 20) {	// if there's already 20 items with the same name, return void;
@@ -29,11 +29,11 @@ public class ItemFactory {
 
 		}
 		
-		else if (type.equalsIgnoreCase("textbook")) {
+		else if (class.equalsIgnoreCase("textbook")) {
 			return new Textbook(name, type, price, publisher);
 		}
 		
-		else if (type.equalsIgnoreCase("newsletter")) {
+		else if (class.equalsIgnoreCase("newsletter")) {
 			return new Newsletter(name, type, price, publisher);
 		}
 		
