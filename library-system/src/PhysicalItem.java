@@ -13,7 +13,7 @@ public class PhysicalItem extends Item{
 		this.rentable = rentable;
 		Database.getDatabase().loaditem(this);
 		rented = false;
-
+		PhysicalItemRepo.addItem(this);
 	}
 	
 	public PhysicalItem() {
