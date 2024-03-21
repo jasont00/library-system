@@ -5,9 +5,11 @@ package librarysystem;
 public class OnlineItem extends Item{
 	String publisher;
 	
-	public OnlineItem(String name, String type, Double price, String publisher) {
+	public OnlineItem(String name, String type, Double price, String publisher)throws Exception {
 		super(name, type, price);
 		this.publisher = publisher;
+		Database.getDatabase().loaditem(this);
+		Database.getDatabase().updateitem();
 	}
 	
 	public void open() {
