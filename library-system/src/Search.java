@@ -3,6 +3,8 @@ package librarysystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//checkSimilar needs work, unsure of how to get the csv files to look for all of the avaialable books to get checkSimilar Items
+
 public class Search {
 
 	
@@ -38,37 +40,35 @@ public class Search {
 	}
 //	--> can do it through Test Cases till the GUI is implemented which then this would prompt user for result through sys.out
 	
-	public Item filterSearch(String key, String itemType) {
+	
+public Item filterSearch(String key, String itemType) {
 		Item item = new Item(); 
 		item.name = key; 
 		item.type = itemType; 
 		
-		if (Database.checkStock(item)> 0) {
+		if (Database.getDatabase().checkStock(item)> 0) {
 			return Item.getItem(key); 
 		}
 		else return null;  
 	}
-	public Item search(String key) {
+	public void search(String key) {
 		
-		if (Database.checkStock(key)>0) {
-			return Item.getItem(key); 
+		if (Database.getDatabase().checkStock(key)>0) {
+			Database.getDatabase().search(key); 
 		}
 		
-		if (Database.checkStock(key)>1) {
+		if (Database.getDatabase().checkStock(key)>1) {
 			ArrayList<String> similarList = checkSimilar(key); 
 			//return options
 		}
-		else return null; 
 				
  	
 	}
 	
 	public ArrayList<String> checkSimilar(String key){
 	//words that are less than 3-5 letters different than key is considered "similar"
-
-		
 		ArrayList<String> similarItem = new ArrayList<String>;
-		for (String word: Database.items) //items is a list in the library database
+		for (String word: Database.getItems().items) //items is a list in the library database
 			if(levenshteinDistance(key, word) <= 5) {
 				similarItem.add(word); 
 			}
@@ -95,8 +95,6 @@ public class Search {
 		}
 		return dist[key.length()][word.length()];
 	}
-	
-	
 	
 	
 
