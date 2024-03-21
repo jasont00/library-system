@@ -5,18 +5,14 @@ import java.util.List;
 
 class User {
 	
-	//Finish the methods request, view textbook and courses, and update.
+	//Finish the methods view textbook and view courses, and update.
 	
 	private String type = " ";
 	private String email = " ";
 	private String password = " ";
+	Admin admin = new Admin();
 	public boolean rentEligible;
-	
-	
-	List<PhysicalItem> rentedItems = new ArrayList<>();
-	List<Newsletter> subscriptions = new ArrayList<>();
-	public List<Item> purchasedItems = new ArrayList<>();
-	
+	List<Item> OwnedItems = new ArrayList<>();
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
 		// TODO Auto-generated method stub
@@ -61,7 +57,7 @@ class User {
 	
 	public void rentItem(PhysicalItem i) {
 		if(PhysicalItem.getRentable() == true) {
-			rentedItems.add(i);
+			OwnedItems.add(i);
 		}
 		else {
 			System.out.println("This item is not rentable");
@@ -69,19 +65,19 @@ class User {
 	}
 	
 	public void subscribe(Newsletter n) {
-		subscriptions.add(n);
+		OwnedItems.add(n);
 	}
 
 	public void cancel(Newsletter n) {
-		subscriptions.remove(n);
+		OwnedItems.remove(n);
 	}
 
-	public void requestItem(String s) {
-		// TODO Auto-generated method stub
+	public void requestItem(Item i) {
+		admin.createItem(i);
 	}
 	
 	public void purchase(Item i) {
-		purchasedItems.add(i);
+		OwnedItems.add(i);
 		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
 	
