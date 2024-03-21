@@ -10,7 +10,7 @@ import java.util.List;
  * 
  */
 
-public abstract class AbstractUser {
+public abstract class AbstractUsasder {
 	protected User user;
 	public String type;
 	protected String email;
