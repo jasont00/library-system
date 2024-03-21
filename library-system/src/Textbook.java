@@ -5,7 +5,6 @@ package librarysystem;
  */
 import java.util.ArrayList;
 public class Textbook extends OnlineItem{
-	ArrayList<Course> courses;
 	public boolean available;
 	
 	public Textbook (String name, double price, String publisher) {
