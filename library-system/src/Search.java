@@ -68,11 +68,10 @@ public Item filterSearch(String key, String itemType) {
 	public ArrayList<String> checkSimilar(String key){
 	//words that are less than 3-5 letters different than key is considered "similar"
 		ArrayList<String> similarItem = new ArrayList<String>;
-		for (String word: Database.getItems().items) //items is a list in the library database
-			if(levenshteinDistance(key, word) <= 5) {
+		for (Item i: Database.getDatabase()).item) //items is a list in the library database
+			if(levenshteinDistance(key, i.getName()) <= 5) {
 				similarItem.add(word); 
 			}
-		
 		return similarItem;	
 		
 	}
