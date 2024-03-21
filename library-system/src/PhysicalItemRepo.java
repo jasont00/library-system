@@ -3,17 +3,17 @@ package librarysystem;
 import java.util.HashMap;
 
 public class PhysicalItemRepo {
-	static HashMap<Integer, PhysicalItem> inventory = new HashMap<Integer, PhysicalItem>();		// stores items by their ID
+	static HashMap<Integer, PhysicalItem> inventory = new HashMap<Integer, PhysicalItem>();			// stores items by their ID
 	static HashMap<String, Integer> itemOccurrences = new HashMap<String, Integer>();				// stores quantity of items with the same name
 	
-	public HashMap<Integer, Item> getInventory() {
+	public static HashMap<Integer, Item> getInventory() {
 		return stock;
 	}
 	
 	public static void addItem(PhysicalItem item) {
 		stock.put(item.getId(), item);
 		
-		String itemName = item.getName();
+		String itemName = item.getName();	// account for occurrences of each item with the same name
 		itemOccurrences.put(itemName, itemOccurrences.getOrDefault(itemName, 0) + 1)
 	}
 	

@@ -7,20 +7,34 @@ import com.group.librarysystemgui.Model.Item;
  */
 public class ItemFactory {
 	public Item getItem(String name, String type, double price, String publisher, boolean rentable) {
+		
 		if (type.equalsIgnoreCase("onlineitem")) {
 			return new OnlineItem(name, type, price, publisher);
 		}
+		
 		else if (type.equalsIgnoreCase("physicalitem")) {	// automatically stores the item in the physicalItemRepo
 			Item item = new PhysicalItem(name, type, price, rentable);
-			PhysicalItemRepo.addItem(item.getId(), item);
-			return item;
+			
+			if (PhysicalItemRepo.itemOccurrences.get(item.getName()) > 20) {	// if there's already 20 items with the same name, return void;
+				System.out.println("There are already 20 copies of an item with the same name.");
+				return null;
+			}
+			
+			else {
+				PhysicalItemRepo.addItem(item.getId(), item);
+				return item;
+			}
+
 		}
+		
 		else if (type.equalsIgnoreCase("textbook")) {
 			return new Textbook(name, type, price, publisher);
 		}
+		
 		else if (type.equalsIgnoreCase("newsletter")) {
 			return new Newsletter(name, type, price, publisher);
 		}
+		
 		else {
 			return null;
 		}
