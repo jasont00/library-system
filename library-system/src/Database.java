@@ -10,7 +10,9 @@ public class Database {
 	public ArrayList<Item> items = new ArrayList<Item>();
 	public ArrayList<User> users = new ArrayList<User>();
 	public static int IDS =0;
-	public String path;
+	public String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
+	public String path2 = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
+
 	private static Database instance;
 	
 	//contructors for the singleton pattern
@@ -37,7 +39,7 @@ public class Database {
 	
 	//Searching within the database
 	//either for just searching or for getting the price of an item
-	public String search(String path, String book,String func) throws Exception{
+	public String search(String book,String func) throws Exception{
 		CsvReader reader = new CsvReader(path); 
 		String result = " ";
 		reader.readHeaders();
@@ -74,7 +76,7 @@ public class Database {
 		return "don't got it";
 	}
 	
-	public void updateitem(String path) throws Exception{
+	public void updateitem() throws Exception{
 		try {		
 			
 				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
@@ -118,9 +120,9 @@ public class Database {
 			}
 	}
 	///basically the same thing as the updateitem one
-	public void updateuser(String path) throws Exception{
+	public void updateuser() throws Exception{
 		try {		
-				CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
+				CsvWriter csvOutput = new CsvWriter(new FileWriter(path2, false), ',');
 				//name,id,email,password
 		    	csvOutput.write("type");
 				csvOutput.write("email");
@@ -146,7 +148,7 @@ public class Database {
 	}
 	
 	//searches the csv for occurances of a book and sends back the amount of them
-	public int checkstock(String path, String name) throws IOException {
+	public int checkstock(String name) throws IOException {
 		CsvReader reader = new CsvReader(path); 
 		int result=0;
 		reader.readHeaders();		
