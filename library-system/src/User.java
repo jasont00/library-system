@@ -1,7 +1,9 @@
 package librarysystem;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.plaf.synth.SynthToolTipUI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 class User {
 	
@@ -13,7 +15,51 @@ class User {
 	Admin admin = new Admin();
 	public boolean rentEligible;
 	List<Item> ownedItems = new ArrayList<>();
-	List<PhysicalItem> rentedItems = new ArrayList<>();
+//	List<PhysicalItem> rentedItems = new ArrayList<>();
+
+	// Key is the item rented, Value is the duedate
+	HashMap<PhysicalItem, String> rentedItems = new HashMap<>();
+
+	/**
+	 * - make a due date which is calculated using current date
+	 * - send a warning when duedate-current date approaches a certain x (can be 3)
+	 * - Add a 50cent fees each day for every number below 0 for dueDate-currentDate +
+	 * - when dueDate-currentDate reaches 15 it is considered lost
+	 * @return
+	 */
+	public int countOverDue(){
+		int overdueCount = 0;
+		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
+		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
+			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
+			if(daysUntilDue<0){
+				overdueCount++;
+			}
+		}
+		return overdueCount;
+	}
+
+	public int countLost(){
+		int lostCount = 0;
+		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
+		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
+			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
+			if(daysUntilDue<=-15){
+				lostCount++;
+			}
+		}
+		return lostCount;
+	}
+
+	public boolean checkPrivileges(){
+		return countOverDue() <=3;
+	}
+
+	public double calculatePenalty(){
+		return 50*countOverDue();
+	}
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
 		// TODO Auto-generated method stub
@@ -30,7 +76,7 @@ class User {
 	public void setEmail(String s) throws Exception {
 		if(RegistrationHandler.getRegistrationHandler().verifyEmail(s)) {
 			this.email = s;
-		}		
+		}
 	}
 
 	public void setPassword(String s) {
