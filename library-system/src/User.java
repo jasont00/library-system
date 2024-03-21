@@ -114,7 +114,7 @@ class User {
 	
 	public void rentItem(PhysicalItem i, User user) {
         if(i.getRentable() == true && user.rentedItems.size()<10 ) {
-            rentedItems.add(i, i.dueDate);
+            rentedItems.put(i, i.dueDate);
         }
         else if (i.getRentable() == false){
             System.out.println("This item is not rentable");
