@@ -7,7 +7,8 @@ import java.util.*;
 
 class User {
 	
-	//Finish the methods view courses (which will be implemented in the gui), and update
+	//Finish the method update
+	//Implement the cost of newsletters 
 	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
 	
