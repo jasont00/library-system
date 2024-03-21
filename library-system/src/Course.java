@@ -13,11 +13,19 @@ public class Course {
 		name = n;
 		code = c;
 		
-		textbooks = new ArrayList<String>();
+		textbooks = new ArrayList<Textbook>();
 	}
 	
 	public ArrayList<Textbook> getTextbooks() {
 		return textbooks;
+	}
+	
+	public void addTextbook(Textbook t) {
+		textbooks.add(t);
+	}
+	
+	public void printDetails() {
+		System.out.println("Name: " + name + " Code: " + code);
 	}
 	
 }
