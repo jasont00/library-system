@@ -133,5 +133,8 @@ class User {
 	public void update(TextbookSubject t) { //Only Faculty type can use this method
 		// TODO Auto-generated method stub
 	}
-	
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", type=" + type + "]";
+	}
 }
