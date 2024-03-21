@@ -1,18 +1,6 @@
 package librarysystem;
 
-class StudentBuilder extends UserDecorator {
-	
-
-	public void viewTextbooks() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void assemble() {
-		super.assemble();
-		System.out.println("Student Features");
-	}
+class StudentBuilder extends UserBuilder {
 	
 	public void buildType() {
 		user.setType("student");
@@ -26,31 +14,4 @@ class StudentBuilder extends UserDecorator {
 		user.setPassword("studentsPassword");
 	}
 
-	@Override
-	public void rentItem(Item i) {
-		rentedItems.add(i);
-	}
-
-	@Override
-	public void subscribe(Newsletter n) {
-		subscriptions.add(n);
-	}
-
-	@Override
-	public void cancel(Newsletter n) {
-		subscriptions.remove(n);
-	}
-
-	@Override
-	public void requestItem(String s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void purchase(Item i) throws Exception {
-		purchasedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName());
-	}
-	
 }
