@@ -102,7 +102,7 @@ class User {
 	}
 	
 	public void rentItem(PhysicalItem i, User user) {
-        if(i.getRentable() == true && user.rentedItems.size<10 ) {
+        if(i.getRentable() == true && user.rentedItems.size()<10 ) {
             rentedItems.add(i);
         }
         else if (i.getRentable() == false){
