@@ -12,7 +12,7 @@ class User {
 	private String password = " ";
 	Admin admin = new Admin();
 	public boolean rentEligible;
-	List<Item> OwnedItems = new ArrayList<>();
+	List<Item> ownedItems = new ArrayList<>();
 	List<PhysicalItem> rentedItems = new ArrayList<>();
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
@@ -68,11 +68,11 @@ class User {
     }
 	
 	public void subscribe(Newsletter n) {
-		OwnedItems.add(n);
+		ownedItems.add(n);
 	}
 
 	public void cancel(Newsletter n) {
-		OwnedItems.remove(n);
+		ownedItems.remove(n);
 	}
 
 	public void requestItem(Item i) {
@@ -80,7 +80,7 @@ class User {
 	}
 	
 	public void purchase(Item i) {
-		OwnedItems.add(i);
+		ownedItems.add(i);
 		PaymentHandler.getPaymentHandler().getPrice(i.getName);
 	}
 	
