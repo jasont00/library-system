@@ -8,6 +8,7 @@ import java.util.*;
 class User {
 	
 	//Finish the methods view courses, and update.
+	//update everything onto the class diagram on draw.io
 	
 	private String type = " ";
 	private String email = " ";
