@@ -1,22 +1,20 @@
 package librarysystem;
 
 class UserDirector {
-	private AbstractUser abstractUser;
+	private UserBuilder userBuilder;
 	
-	public void setAbstractUser(AbstractUser au) {
-		abstractUser = au;
+	public void setUserBuilder(UserBuilder ub) {
+		userBuilder = ub;
 	}
 	
 	public User getUser() {
-		return abstractUser.getUser();
+		return userBuilder.getUser();
 	}
 	
 	public void createUser() {
-		abstractUser.createNewUser();
-		abstractUser.buildType();
-		abstractUser.buildEmail();
-		abstractUser.buildPassword();
-		Database.getDatabase().loaduser(getUser());
-
+		userBuilder.createNewUser();
+		userBuilder.buildType();
+		userBuilder.buildEmail();
+		userBuilder.buildPassword();
 	}
 }
