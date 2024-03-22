@@ -33,6 +33,10 @@ public class User implements TextBookObserver {
 		this.rentEligible = true;
 	}
 
+	public void setRentEligible(Boolean rent){
+		this.rentEligible = rent;
+	}
+
 	/**
 	 * - make a due date which is calculated using current date
 	 * - send a warning when duedate-current date approaches a certain x (can be 3)

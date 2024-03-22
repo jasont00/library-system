@@ -1,0 +1,5 @@
+name,id,type,price,publisher,rentable
+Book1,1,textbook,10,AZZ,true
+Book2,2,textbook,20,BCC,true
+Fashion,3,magazine,10,CAA,true
+Taylor,4,CD,141,Music.Inc, true

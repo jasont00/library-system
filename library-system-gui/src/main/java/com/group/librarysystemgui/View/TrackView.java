@@ -24,8 +24,8 @@ public class TrackView extends ContentView {
         Label label2 = new Label("Notifications of New Edition");
 
         List<Course> courses = Arrays.asList(
-                new Course("Course 1", Arrays.asList(new Textbook("Textbook 1",10,"AAA")).toString()),
-                new Course("Course 2", Arrays.asList(new Textbook("Textbook 2", 10,"AAA")).toString())
+                new Course("Course 1", Arrays.asList(new Textbook("Textbook 1",10)).toString()),
+                new Course("Course 2", Arrays.asList(new Textbook("Textbook 2", 10)).toString())
         );
 
         ObservableList<Course> observableCourses = FXCollections.observableArrayList(courses);

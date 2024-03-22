@@ -54,12 +54,12 @@ public class SearchView extends ContentView {
         HBox listBox = new HBox(20, resultsBox, recommendationsBox);
 
         ObservableList<Textbook> sampleResults = FXCollections.observableArrayList(
-                new Textbook("Book 1",  29.99,"Publisher A"),
-                new Textbook("Book 2", 49.99,"Publisher B")
+                new Textbook("Book 1",  29.99),
+                new Textbook("Book 2", 49.99)
         );
         ObservableList<Textbook> sampleRecommendations = FXCollections.observableArrayList(
-                new Textbook("Book 1",  29.99,"Publisher A"),
-                new Textbook("Book 2", 49.99,"Publisher B")
+                new Textbook("Book 1",  29.99),
+                new Textbook("Book 2", 49.99)
         );
 
         searchButton.setOnAction(event -> {

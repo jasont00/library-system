@@ -9,7 +9,6 @@ public class PhysicalItemRepo {
     public static HashMap<Integer, PhysicalItem> getInventory() {
         return inventory;
     }
-
     public static void addItem(PhysicalItem item) {
         inventory.put(item.getId(), item);
 

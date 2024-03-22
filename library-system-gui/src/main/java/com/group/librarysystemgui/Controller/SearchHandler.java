@@ -21,7 +21,7 @@ public class SearchHandler {
     //TODO
     public static List<Textbook> searchSimilarBooks(String input){
         ArrayList<Textbook> books = new ArrayList<>();
-        books.add(new Textbook("Book1",10,"Publisher1"));
+        books.add(new Textbook("Book1",10));
         return books;
     }
 }

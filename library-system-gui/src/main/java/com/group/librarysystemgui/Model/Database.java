@@ -3,6 +3,7 @@ package com.group.librarysystemgui.Model;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Database {
     public ArrayList<Item> items = new ArrayList<Item>();
     public ArrayList<User> users = new ArrayList<User>();
     public static int IDS =0;
-    public String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
+    public String itemDataPath = "itemData.csv";
     public String userDataPath = "userData.csv";
 
     private static Database instance;
@@ -25,8 +26,62 @@ public class Database {
     public static Database getDatabase() {
         if(instance==null) {
             instance = new Database();
+            instance.loadItemData();
+            instance.loadUserData();
         }
         return instance;
+    }
+
+    public void loadItemData(){
+        CsvReader reader = null;
+        try {
+            reader = new CsvReader(itemDataPath);
+            reader.readHeaders();
+        } catch (IOException e) {
+            return;
+        }
+
+        while(true){
+            try {
+                if (!reader.readRecord()) break;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                Item item = ItemFactory.getItem(reader.get("type"),reader.get("name"),Double.parseDouble(reader.get("price")),reader.get("publisher"),Boolean.parseBoolean(reader.get("rentable")));
+                instance.items.add(item);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void loadUserData(){
+        CsvReader reader = null;
+        try {
+            reader = new CsvReader(userDataPath);
+            reader.readHeaders();
+        } catch (IOException e) {
+            return;
+        }
+
+        while(true){
+            try {
+                if (!reader.readRecord()) break;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                User user = new User(reader.get("type"),reader.get("email"),reader.get("password"));
+                user.setRentEligible(Boolean.parseBoolean(reader.get("rent eligible")));
+                instance.users.add(user);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     //adding an item to the arraylist
@@ -44,7 +99,7 @@ public class Database {
     //Searching within the database
     //either for just searching or for getting the price of an item
     public String search(String book,String func) throws Exception{
-        CsvReader reader = new CsvReader(path);
+        CsvReader reader = new CsvReader(itemDataPath);
         String result = " ";
         reader.readHeaders();
 
@@ -105,7 +160,7 @@ public class Database {
     public void updateitem() throws Exception{
         try {
 
-            CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
+            CsvWriter csvOutput = new CsvWriter(new FileWriter(itemDataPath, false), ',');
             //this writes the headers into the file (name,id,email,password)
             csvOutput.write("name");
             csvOutput.write("id");
@@ -176,7 +231,7 @@ public class Database {
 
     //searches the csv for occurances of a book and sends back the amount of them
     public int checkstock(String name) throws IOException {
-        CsvReader reader = new CsvReader(path);
+        CsvReader reader = new CsvReader(itemDataPath);
         int result=0;
         reader.readHeaders();
 
