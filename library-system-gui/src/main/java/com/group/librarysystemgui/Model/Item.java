@@ -68,7 +68,7 @@ public abstract class Item {
     public boolean getRentable(){
         return rentable;
     }
-      public String getPublisher(){
+    public String getPublisher(){
         return null;
     }
     public String getOwner() {
