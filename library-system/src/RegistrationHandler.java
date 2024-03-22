@@ -15,8 +15,6 @@ private static RegistrationHandler instance;
 	}
 	
 	public boolean verifyEmail(String email) throws Exception {
-		String path = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
-
 		if(email.contains("@")) {
 			if(Database.getDatabase().search(email, "email").equalsIgnoreCase("true")) {
 				return true;
@@ -44,7 +42,4 @@ private static RegistrationHandler instance;
 		return false;
 	}
 	
-	public void createUser(String user) {
-		
-	}
 }
