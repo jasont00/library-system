@@ -7,11 +7,11 @@ public abstract class UserBuilder {
 		user = new User(); 
 	}
 	
-	public abstract void buildType();
+	public abstract void buildType()throws Exception;
 	
-	public abstract void buildEmail() throws Exception;;
+	public abstract void buildEmail() throws Exception;
 	
-	public abstract void buildPassword();
+	public abstract void buildPassword()throws Exception;
 
 	public User getUser() {
 		return user;
