@@ -6,6 +6,7 @@ package com.group.librarysystemgui.Model;
 public class Newsletter extends OnlineItem {
     // price represents the subscription price (per month)
     // some external features that are outside the scope of this course should be added here to accomodate viewing the newsletter through the external "interface"
+    String owner;
 
     public Newsletter (String name, double price, String publisher){
         super(name, price, publisher);
@@ -47,4 +48,13 @@ public class Newsletter extends OnlineItem {
                                 
                 """;
     }
+
+	public void setOwner(String email) {
+		// TODO Auto-generated method stub
+		this.owner = email;
+	}
+	public String getOwner() {
+		// TODO Auto-generated method stub
+		return this.owner;
+	}
 }
