@@ -1,13 +1,13 @@
 name,id,type,price,publisher,rentable
-Book1,3,Textbook,10.0, Book Makers, false 
-Book2,4,Textbook,20.0,Book Makers, false
-NC-Times,5,Newsletter,20.0,New York, false
-Introduction to Java,6,Textbook,21.0,Computer s
-The Great Gatsby, 7, PhysicalItem, 30, CharlesScribner's Son, true
-Design Patterns for EECS3311, 8, PhysicalItem, 90, ComputerScience E., true
-UML for Software Design for EECS3311,9, PhysicalItem, 80, ComputerScience E., true
-UML for Software Design for EECS3311,10, TextBook, 45, ComputerScience E., false
-Algorithms for EECS3101, 11, PhysicalItem, 87, Computer Logic E., true
-Algorithms for EECS3101, 11, Textbook, 55, Computer Logic E., false
-Ethics and Technology: Controversies, Questions and Strategies, 12, PhysicalItem, 86, ComputerScience E., true
+Book1,3,Textbook,10.00, Book Makers, false 
+Book2,4,Textbook,20.00,Book Makers, false
+NC-Times,5,Newsletter,20.00,New York, false
+Introduction to Java,6,Textbook,21.00,Computer s
+The Great Gatsby, 7, PhysicalItem, 30.00, CharlesScribner's Son, true
+Design Patterns for EECS3311, 8, PhysicalItem, 90.00, ComputerScience E., true
+UML for Software Design for EECS3311,9, PhysicalItem, 80.00, ComputerScience E., true
+UML for Software Design for EECS3311,10, TextBook, 45.00, ComputerScience E., false
+Algorithms for EECS3101, 11, PhysicalItem, 87.00, Computer Logic E., true
+Algorithms for EECS3101, 11, Textbook, 55.00, Computer Logic E., false
+Ethics and Technology: Controversies, Questions and Strategies, 12, PhysicalItem, 86.00, ComputerScience E., true
 name,id,type,price,publisher,rentable
