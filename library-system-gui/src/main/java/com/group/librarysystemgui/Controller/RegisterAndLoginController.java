@@ -16,7 +16,7 @@ public class RegisterAndLoginController {
         // Any client should be able to register as a user of the system with a unique/valid email and strong password
         // (i.e., a combination of uppercase letters, lowercase letters, numbers, and symbols).
         if(!checkStrongPW(password)) return false;
-        if(verifyEmail(email)) return false;
+        if(!verifyEmail(email)) return false;
         User user = new User(type,email,password);
         try {
             // Add the information to the user database.
@@ -32,13 +32,15 @@ public class RegisterAndLoginController {
 
     //TODO
     public static boolean login(String email,String password){
-//        return true;
+        //return true;
         // check the email and password from the database
-        if(!verifyEmail(email)) return false;
+        if(!verifyEmail(email)) {
+        	System.out.println("sadsd");
         for(User user:Database.getDatabase().users){
             if(user.getEmail().equals(email) && user.getPassword().equals(password)){
                 return true;
             }
+        }
         }
         return false;
     }
@@ -68,7 +70,10 @@ public class RegisterAndLoginController {
     private static boolean verifyEmail(String email)  {
         if(email.contains("@")) {
             try {
-                return Database.getDatabase().searchUser(email, "email").equalsIgnoreCase("true");
+        		//System.out.println(String.valueOf(Database.getDatabase().search(email,"email")));
+            	if(Database.getDatabase().search(email,"email").equalsIgnoreCase("true")) {
+    				return true;
+    			}
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 return false;
