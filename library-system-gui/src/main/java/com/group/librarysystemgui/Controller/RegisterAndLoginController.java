@@ -32,15 +32,15 @@ public class RegisterAndLoginController {
 
     //TODO
     public static boolean login(String email,String password){
-        return true;
-//        // check the email and password from the database
-//        if(!verifyEmail(email)) return false;
-//        for(User user:Database.getDatabase().users){
-//            if(user.getEmail().equals(email) && user.getPassword().equals(password)){
-//                return true;
-//            }
-//        }
-//        return false;
+//        return true;
+        // check the email and password from the database
+        if(!verifyEmail(email)) return false;
+        for(User user:Database.getDatabase().users){
+            if(user.getEmail().equals(email) && user.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean checkStrongPW(String pw) {

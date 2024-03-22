@@ -1,2 +1,4 @@
 type,email,password,rent eligible
 faulty,wang2@gmail.com,Accc114@1ada,true
+student,Ac@gmail.com,Passa21,true
+faulty,gcc@gmail.com,ACccc12,true

@@ -39,6 +39,7 @@ public class ItemFactory {
             }else{
                 item = new Textbook(name, price);
             }
+            PhysicalItemRepo.addItem((PhysicalItem) item);
         } else if (type.equalsIgnoreCase("newsletter")) {
             item = new Newsletter(name, price, publisher);
         } else if (type.equalsIgnoreCase("onlinebook")) {

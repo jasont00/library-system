@@ -20,7 +20,7 @@ public class ItemHandler {
      * @return list of items.
      */
     public static List<PhysicalItem> getAlPhysicallItems(){
-        return (List<PhysicalItem>) PhysicalItemRepo.inventory.values();
+        return PhysicalItemRepo.inventory.values().stream().toList();
     }
 
 
