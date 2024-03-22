@@ -14,8 +14,8 @@ public class Database {
     public ArrayList<Item> items = new ArrayList<Item>();
     public ArrayList<User> users = new ArrayList<User>();
     public static int IDS =0;
-    public String itemDataPath = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
-    public String userDataPath = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
+    public String itemDataPath = "itemData.csv";
+    public String userDataPath = "userData.csv";
 
     private static Database instance;
 
