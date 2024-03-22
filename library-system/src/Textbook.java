@@ -6,6 +6,7 @@ package librarysystem;
 
 public class Textbook extends OnlineItem{
 	public boolean available;
+	public int edition;
 	
 	public Textbook (String name, double price, String publisher) throws Exception{
 		super(name, "textbook", price, publisher);

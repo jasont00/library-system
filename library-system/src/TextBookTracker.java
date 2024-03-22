@@ -1,9 +1,8 @@
 package librarysystem;
 
-import javax.xml.soap.Text;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 class TextBookSubject{
     List<TextBookObserver> textBookObserver;
@@ -23,16 +22,60 @@ class TextBookSubject{
             tb.update(this);
         }
     }
+
+    public List<TextBookObserver> getTextBookObserver() {
+        return textBookObserver;
+    }
+
+    public void setTextBookObserver(List<TextBookObserver> textBookObserver) {
+        this.textBookObserver = textBookObserver;
+    }
+
+    public Textbook getTextbook() {
+        return textbook;
+    }
+
+    public void setTextbook(Textbook textbook) {
+        this.textbook = textbook;
+    }
 }
 
 interface TextBookObserver{
     void update(TextBookSubject textBookSubject);
 }
+
+// Singleton
 public class TextBookTracker {
+
+    private static TextBookTracker instance;
+
+    private TextBookTracker() {}
     private List<TextBookSubject> textbooks;
 
+
+    public static TextBookTracker getInstance() {
+        if (instance == null) {
+            instance = new TextBookTracker();
+        }
+        return instance;
+    }
+
+    /**
+     * add the textbook to the tracker
+     * and check the existing textbook
+     * and query the user(faculty) that need to observer in this book
+     * @param textbook
+     */
     public void addTextbook(Textbook textbook){
-        this.textbooks.add(new TextBookSubject(textbook));
+        TextBookSubject newSubject = new TextBookSubject(textbook);
+        // check the existing textbook whether to notify
+        for(TextBookSubject subject:this.textbooks){
+            if(subject.textbook.name.equals(textbook.name)){
+                subject.notifyObservers();
+                newSubject.setTextBookObserver(subject.textBookObserver);
+            }
+        }
+        this.textbooks.add(newSubject);
     }
 
     public void updateTextBookAvailability(int textbookId,boolean available){
@@ -48,40 +91,5 @@ public class TextBookTracker {
         for(TextBookSubject tb:this.textbooks){
             tb.notifyObservers();
         }
-    }
-}
-
-//TODO: This is not completely done because it should be part of the Faculty Class, not here.
-// Consider other member's implement of Faculty and revise it
-class Faculty implements TextBookObserver {
-
-    @Override
-    public void update(TextBookSubject textBookSubject) {
-        // courses the user is teaching and the textbooks the user has previously used.
-        // a new edition is available
-        if(textBookSubject.textbook.available){
-            receiveNotification(textBookSubject.textbook);
-        }
-    }
-
-    private void receiveNotification(Textbook textbook){
-        // The app then offers notifications to the user when a new edition of the textbook is available.
-        System.out.println(textbook.name + "has new edition being available");
-    }
-}
-
-
-class LibraryTeam implements TextBookObserver{
-
-    @Override
-    public void update(TextBookSubject textBookSubject) {
-        //  If a textbook is not available, the app should notify the library management team of this,
-        if(!textBookSubject.textbook.available){
-            requestBookPurchase(textBookSubject.textbook);
-        }
-    }
-
-    public void requestBookPurchase(Textbook textbook){
-        // consult with the user to procure the book.
     }
 }

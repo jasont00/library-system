@@ -2,10 +2,11 @@ package librarysystem;
 
 import javax.swing.plaf.synth.SynthToolTipUI;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-class User {
+class User implements TextBookObserver {
 	
 	//Finish the method update
 	//Implement the cost of newsletters 
@@ -19,10 +20,12 @@ class User {
 	public boolean rentEligible;
 	List<Item> ownedItems = new ArrayList<>();
 	List<Course> courses = new ArrayList<>();
+	List<Notification> notificationList = new ArrayList<>();
+
 //	List<PhysicalItem> rentedItems = new ArrayList<>();
 
 	// Key is the item rented, Value is the duedate
-	HashMap<PhysicalItem, String> rentedItems = new HashMap<>();
+	HashMap<PhysicalItem, LocalDate> rentedItems = new HashMap<>();
 
 	/**
 	 * - make a due date which is calculated using current date
@@ -33,9 +36,8 @@ class User {
 	 */
 	public int countOverDue(){
 		int overdueCount = 0;
-		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
-		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+		for (Map.Entry<PhysicalItem, LocalDate> entry : rentedItems.entrySet()) {
+			LocalDate dueDate = entry.getValue();
 			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
 			if(daysUntilDue<0){
 				overdueCount++;
@@ -46,9 +48,8 @@ class User {
 
 	public int countLost(){
 		int lostCount = 0;
-		final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE;
-		for (Map.Entry<PhysicalItem, String> entry : rentedItems.entrySet()) {
-			LocalDate dueDate = LocalDate.parse(entry.getValue(), dtf);
+		for (Map.Entry<PhysicalItem, LocalDate> entry : rentedItems.entrySet()) {
+			LocalDate dueDate = entry.getValue();
 			long daysUntilDue = LocalDate.now().until(dueDate).getDays();
 			if(daysUntilDue<=-15){
 				lostCount++;
@@ -66,11 +67,9 @@ class User {
 	}
 	
 	public void addCourse(Course c) { //Only student can add courses, textbooks from the course will be added to ownedItems list
-		if(this.type == "student") {
+		if(Objects.equals(this.type, "student")) {
 			courses.add(c);
-			for(Textbook t : c.getTextbooks()) {
-				ownedItems.add(t);
-			}
+			ownedItems.addAll(c.getTextbooks());
 		}
 		else {
 			System.out.println("Cannot add course");
@@ -78,7 +77,7 @@ class User {
 	}
 	
 	public void viewCourses() { //Only Faculty type can use this
-		if(this.type == "faculty") {
+		if(Objects.equals(this.type, "faculty")) {
 			for(Course c : courses) {
 				c.printDetails();
 			}
@@ -89,7 +88,7 @@ class User {
 	}
 	
 	public void viewTextbooks() { //Only Student and Faculty type can use this method
-        if(this.type == "student" || this.type == "faculty") {
+        if(Objects.equals(this.type, "student") || Objects.equals(this.type, "faculty")) {
             for(Item i : ownedItems) {
                 if(i.getClass().equals(Textbook.class)) {
                     System.out.println(i.getName());
@@ -135,15 +134,16 @@ class User {
 	}
 	
 	public void rentItem(PhysicalItem i) {
-		if(i.rented == true) {
+		if(i.rented) {
 			System.out.println("This item is already rented");
 		}
 		
-		else if(i.getRentable() == true && rentedItems.size()<10 ) {
-	            rentedItems.put(i, i.dueDate);
+		else if(i.getRentable() && rentedItems.size()<10 ) {
+			LocalDate dueDate = LocalDate.now().plus(Period.ofMonths(1));
+			rentedItems.put(i,dueDate);
 	            i.setRented(true);
         	}
-	        else if (i.getRentable() == false){
+	        else if (!i.getRentable()){
 	            System.out.println("This item is not rentable");
 	        }
 	        else {
@@ -163,17 +163,23 @@ class User {
 		ownedItems.remove(n);
 	}
 
-	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {
-		admin.createItem(name, type, publisher, price, rentable);
-	}
+//	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {
+//		admin.createItem(name, type, publisher, price, rentable);
+//	}
 	
 	public void purchase(Item i)  throws Exception {
 		ownedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName);
+		PaymentHandler.getPaymentHandler().getPrice(i.getName());
 	}
-	
-	public void update(TextbookSubject t) { //Only Faculty type can use this method
-		// TODO Auto-generated method stub
+
+
+	@Override
+	public void update(TextBookSubject textBookSubject) {
+		if(!this.type.equals("faculty")){
+			// do nothing.
+			return;
+		}
+		String content = textBookSubject.textbook.name +" is available now for Edition:" + textBookSubject.textbook.edition;
+		this.notificationList.add(new Notification(this,"NewEdition",content));
 	}
-	
 }
