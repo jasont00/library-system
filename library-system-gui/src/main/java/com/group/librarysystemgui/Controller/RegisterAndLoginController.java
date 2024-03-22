@@ -35,7 +35,6 @@ public class RegisterAndLoginController {
         //return true;
         // check the email and password from the database
         if(!verifyEmail(email)) {
-        	System.out.println("sadsd");
         for(User user:Database.getDatabase().users){
             if(user.getEmail().equals(email) && user.getPassword().equals(password)){
                 return true;
