@@ -30,7 +30,6 @@ public class PhysicalItem extends Item{
         rented = b;
     }
 
-    
     public void setOwner(String email) {
     	this.owner = email;
     }
