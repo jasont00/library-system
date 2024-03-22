@@ -186,4 +186,8 @@ class User implements TextBookObserver {
 		String content = textBookSubject.textbook.name +" is available now for Edition:" + textBookSubject.textbook.edition;
 		this.notificationList.add(new Notification(this,"NewEdition",content));
 	}
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", type=" + type + ", password=" + password + "]";
+	}
 }
