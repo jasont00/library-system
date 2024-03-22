@@ -29,6 +29,13 @@ public class PhysicalItem extends Item{
         rented = b;
     }
 
+    
+    public void setOwner(String email) {
+    	this.owner = email;
+    }
+    public String getOwner() {
+    	return owner;
+    }
     @Override
     public String toString() {
         return "Physical Item [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price + "]";
