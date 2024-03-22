@@ -8,8 +8,6 @@ import java.util.*;
 
 class User implements TextBookObserver {
 	
-	//Finish the balance for users requirement
-	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
 	
 	private String type = " ";
