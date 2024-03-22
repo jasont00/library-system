@@ -73,8 +73,9 @@ public class RentRecordHandler {
      * @param user
      * @param item
      * @return
+     * @throws Exception 
      */
-    public static String rentItem(User user, PhysicalItem item){
+    public static String rentItem(User user, PhysicalItem item) throws Exception{
         return user.rentItem(item);
     }
 
