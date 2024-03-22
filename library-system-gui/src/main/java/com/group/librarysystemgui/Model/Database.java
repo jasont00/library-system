@@ -14,8 +14,8 @@ public class Database {
     public ArrayList<Item> items = new ArrayList<Item>();
     public ArrayList<User> users = new ArrayList<User>();
     public static int IDS =0;
-    public String itemDataPath = "itemData.csv";
-    public String userDataPath = "userData.csv";
+    public String itemDataPath = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\item.csv";
+    public String userDataPath = "D:\\YORK\\EECS 3311\\CSV_Example (1)\\CSV_Example\\user.csv";
 
     private static Database instance;
 
@@ -100,8 +100,10 @@ public class Database {
     //either for just searching or for getting the price of an item
     public String search(String book,String func) throws Exception{
         CsvReader reader = new CsvReader(itemDataPath);
+        CsvReader reader2 = new CsvReader(userDataPath);
         String result = " ";
         reader.readHeaders();
+        reader2.readHeaders();
 
         //reading through the file and creating a string message of the info of the book
         if(func.equalsIgnoreCase("search")) {
@@ -123,8 +125,8 @@ public class Database {
         }
         //finding if an email is already in the database
         else if(func.equalsIgnoreCase("email")) {
-            while(reader.readRecord()){
-                if(reader.get("email").equalsIgnoreCase(book)) {
+            while(reader2.readRecord()){
+                if(reader2.get("email").equalsIgnoreCase(book)) {
                     result="false";
                     return result;
                 }
@@ -135,27 +137,7 @@ public class Database {
         return "don't got it";
     }
 
-    public String searchUser(String book,String func) throws Exception{
-        // Use ClassLoader to Load the file and InputStream
-
-        CsvReader reader = new CsvReader(userDataPath);
-
-
-        String result = " ";
-        reader.readHeaders();
-
-        //finding if an email is already in the database
-        if(func.equalsIgnoreCase("email")) {
-            while(reader.readRecord()){
-                if(reader.get("email").equalsIgnoreCase(book)) {
-                    return "true";
-                }
-            }
-            return "false";
-        }
-
-        return "don't got it";
-    }
+ 
 
     public void updateitem() throws Exception{
         try {
