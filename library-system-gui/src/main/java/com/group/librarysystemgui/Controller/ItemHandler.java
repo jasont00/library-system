@@ -20,7 +20,13 @@ public class ItemHandler {
      * @return list of items.
      */
     public static List<PhysicalItem> getAlPhysicallItems(){
-        return PhysicalItemRepo.inventory.values().stream().toList();
+        List<PhysicalItem> items = new ArrayList<>();
+        for(PhysicalItem item:PhysicalItemRepo.inventory.values().stream().toList()){
+            if(item.getRentable()){
+                items.add(item);
+            }
+        }
+        return items;
     }
 
 
