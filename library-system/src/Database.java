@@ -41,8 +41,12 @@ public class Database {
 	//either for just searching or for getting the price of an item
 	public String search(String book,String func) throws Exception{
 		CsvReader reader = new CsvReader(path); 
+		CsvReader reader2 = new CsvReader(path2); 
 		String result = " ";
 		reader.readHeaders();
+		reader2.readHeaders();
+
+		
 
 		//reading through the file and creating a string message of the info of the book
 		if(func.equalsIgnoreCase("search")) {
@@ -64,8 +68,8 @@ public class Database {
 		}
 		//finding if an email is already in the database
 		else if(func.equalsIgnoreCase("email")) {
-			while(reader.readRecord()){ 
-				if(reader.get("email").equalsIgnoreCase(book)) {
+			while(reader2.readRecord()){ 
+				if(reader2.get("email").equalsIgnoreCase(book)) {
 					result="false";
 					return result;
 				}
