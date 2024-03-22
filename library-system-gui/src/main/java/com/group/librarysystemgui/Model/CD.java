@@ -6,3 +6,4 @@ public class CD extends PhysicalItem{
         super.setType("cd");
     }
 }
+
