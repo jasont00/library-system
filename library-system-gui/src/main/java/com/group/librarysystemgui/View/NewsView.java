@@ -101,7 +101,12 @@ public class NewsView extends ContentView {
                 subButton = new Button("SUBSCRIBE");
                 subButton.setOnAction(event -> {
                     Newsletter currentItem = getItem();
-                    NewsletterHandler.SubScribe(UserSession.getInstance().getLoggedInUser(),currentItem);
+                    try {
+						NewsletterHandler.SubScribe(UserSession.getInstance().getLoggedInUser(),currentItem);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     Component.showAlert(Alert.AlertType.INFORMATION,"SUBSCRIPTION","You have New Subscription of: "+currentItem.getName());
                 });
                 HBox.setHgrow(name, Priority.ALWAYS);
