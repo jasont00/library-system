@@ -1,6 +1,7 @@
 package com.group.librarysystemgui.View;
 
 import com.group.librarysystemgui.Controller.PaymentHandler;
+import com.group.librarysystemgui.Model.Database;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
