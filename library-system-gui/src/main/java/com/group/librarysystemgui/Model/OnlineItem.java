@@ -27,5 +27,3 @@ public class OnlineItem extends Item{
         return "OnlineItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";
     }
 }
-
-
