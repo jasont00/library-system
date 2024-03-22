@@ -51,7 +51,13 @@ public class RentView extends ContentView {
                 rentButton.setOnAction(event -> {
                     Item currentItem = getItem();
                     System.out.println("Renting: " + currentItem.getName());
-                    String result = RentRecordHandler.rentItem(UserSession.getInstance().getLoggedInUser(), (PhysicalItem) currentItem);
+                    String result=" ";
+					try {
+						result = RentRecordHandler.rentItem(UserSession.getInstance().getLoggedInUser(), (PhysicalItem) currentItem);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     Component.showAlert(Alert.AlertType.INFORMATION,"Rent Information",result);
                 });
                 HBox.setHgrow(name, Priority.ALWAYS);
