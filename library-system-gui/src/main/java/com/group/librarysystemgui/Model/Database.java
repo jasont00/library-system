@@ -168,6 +168,9 @@ public class Database {
                     csvOutput.write(u.getType());
                     csvOutput.write(String.valueOf(u.getPrice()));
                     csvOutput.write((u.getPublisher()));
+                    if(u.getClass().equals(Newsletter.class)) {
+                        csvOutput.write((u.getOwner()));
+                    }
                     csvOutput.endRecord();
                 }
                 else if(u.getClass().equals(PhysicalItem.class)|| u.getClass().equals(CD.class)|| u.getClass().equals(Textbook.class)|| u.getClass().equals(Magazine.class)) {
