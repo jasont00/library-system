@@ -8,8 +8,7 @@ import java.util.*;
 
 class User implements TextBookObserver {
 	
-	//Finish the method update
-	//Implement the cost of newsletters 
+	//Finish priority requirement and the balance for textbooks
 	//Fully implement the duedate with item class.
 	//update everything onto the class diagram on draw.io
 	
