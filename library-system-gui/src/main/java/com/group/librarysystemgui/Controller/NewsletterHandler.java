@@ -67,8 +67,9 @@ public class NewsletterHandler {
      * @param user
      * @param newsletter
      * @return
+     * @throws Exception 
      */
-    public static boolean SubScribe(User user, Newsletter newsletter){
+    public static boolean SubScribe(User user, Newsletter newsletter) throws Exception{
         user.subscribe(newsletter);
         return true;
     }
