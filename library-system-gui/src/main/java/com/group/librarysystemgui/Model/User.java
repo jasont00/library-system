@@ -163,15 +163,17 @@ public class User implements TextBookObserver {
 		return rentEligible;
 	}
 
-	public String rentItem(PhysicalItem i) {
+	public String rentItem(PhysicalItem i) throws Exception {
 		if(i.rented) {
 			return "This item is already rented";
 		}
 
-		else if(i.getRentable() && rentedItems.size()<10 && rentEligible == true) {
+		else if(i.getRentable() && rentedItems.size()<10 ) {
 			LocalDate dueDate = LocalDate.now().plus(Period.ofMonths(1));
 			rentedItems.put(i,dueDate);
 			i.setRented(true);
+			i.setOwner(this.email);
+			Database.getDatabase().updateitem();
 			return "Successfully Rent the Item: " + i.getName();
 		}
 		else if (!i.getRentable()){
