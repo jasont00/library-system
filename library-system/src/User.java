@@ -171,8 +171,15 @@ class User implements TextBookObserver {
 //	}
 	
 	public void purchase(Item i)  throws Exception {
-		ownedItems.add(i);
-		PaymentHandler.getPaymentHandler().getPrice(i.getName());
+		if(balance >= i.getPrice()) {
+			ownedItems.add(i);
+			balance -= i.getPrice();
+			PaymentHandler.getPaymentHandler().getPrice(i.getName());
+		}
+		else {
+			System.out.println("You don't have enough money");
+		}
+		
 	}
 
 
