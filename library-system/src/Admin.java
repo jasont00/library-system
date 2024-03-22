@@ -9,7 +9,7 @@ public class Admin {
 	public void disableItem(PhysicalItem item) {
 		item.rentable = false; 		
 	}
-	public void createItem(String ctype, String name, String type, double price, String publisher, boolean rentable) {	
+	public void createItem(String ctype, String name, String type, double price, String publisher, boolean rentable)throws Exception {	
 		ItemFactory factory = new ItemFactory();
 		factory.getItem(ctype, name, type, price, publisher, rentable); 
 	}
