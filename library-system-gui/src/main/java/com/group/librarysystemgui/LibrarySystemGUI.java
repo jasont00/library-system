@@ -40,7 +40,7 @@ public class LibrarySystemGUI extends Application {
         titleLabel.setAlignment(Pos.CENTER);
         HBox roleBox = new HBox();
         Label roleLabel = new Label("Role        ");
-        ObservableList<String> options = FXCollections.observableArrayList("student", "faulty", "staff","visitor");
+        ObservableList<String> options = FXCollections.observableArrayList("Student", "Faulty", "Staff","Visitor");
         ComboBox<String> roleComboBox = new ComboBox<>(options);
         roleComboBox.setPrefWidth(150);
         roleBox.getChildren().addAll(roleLabel, roleComboBox);
