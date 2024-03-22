@@ -11,6 +11,7 @@ public class PhysicalItem extends Item{
     boolean rented;
     LocalDate dueDate;
     long daysUntilDue;
+    String owner;
 
     public PhysicalItem(String name, double price, boolean rentable) {
         super(name, "physicalitem", price);
