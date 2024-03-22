@@ -91,12 +91,12 @@ public class ItemManagementView extends ContentView{
 
                 enableButton.setOnAction(event -> {
                     Item currentItem = getItem();
-                    currentItem.setAvailableToRent(true);
+                    currentItem.setRentable(true);
                 });
 
                 disableButton.setOnAction(event ->{
                     Item currentItem = getItem();
-                    currentItem.setAvailableToRent(false);
+                    currentItem.setRentable(false);
                 });
 
                 HBox.setHgrow(name, Priority.ALWAYS);

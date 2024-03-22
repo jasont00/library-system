@@ -10,18 +10,15 @@ public class Textbook extends OnlineItem{
     public int edition;
 
     public Textbook (String name, double price, String publisher) {
-        super(name, "textbook", price, publisher);
+        super(name, price, publisher);
         this.edition = 1;
     }
     public Textbook (String name, double price, String publisher,int edition) {
-        super(name, "textbook", price, publisher);
+        super(name, price, publisher);
         this.edition = edition;
-    }
-    public Textbook (String name, String type, double price, String publisher) {
-        super(name, "textbook", price, publisher);
     }
 
     public void open() {
-        //TODO: empty method
+        System.out.println("(Display textbook contents here)");
     }
 }

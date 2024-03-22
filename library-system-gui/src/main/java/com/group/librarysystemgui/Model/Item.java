@@ -5,7 +5,7 @@ package com.group.librarysystemgui.Model;
  *
  *Zaki: added getters and setters as well as an empty constructor which is needed for the database class
  */
-public class Item {
+public abstract class Item {
     static int IDS = 0;
     int id = 0;
     String name;
@@ -13,7 +13,8 @@ public class Item {
     double price;
 
     // Req.7
-    boolean availableToRent;
+    boolean rentable;
+
     String locationinLibiary;
     String placetoPurchase;
 
@@ -64,10 +65,10 @@ public class Item {
         this.price = price;
     }
 
-    public boolean getAvailableToRent(){
-        return availableToRent;
+    public boolean getRentable(){
+        return rentable;
     }
-    public void setAvailableToRent(Boolean availableToRent){
-        this.availableToRent = availableToRent;
+    public void setRentable(Boolean availableToRent){
+        this.rentable = availableToRent;
     }
 }

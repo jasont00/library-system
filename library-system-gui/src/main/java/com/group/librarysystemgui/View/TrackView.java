@@ -39,8 +39,8 @@ public class TrackView extends ContentView {
                     setText(null);
                 } else {
                     String displayText = course.getName() + ": ";
-                    for (String textbook : course.getTextbooks()) {
-                        displayText += textbook;
+                    for (Textbook textbook : course.getTextbooks()) {
+                        displayText += textbook.getName();
                     }
                     setText(displayText);
                 }

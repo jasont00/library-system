@@ -1,0 +1,5 @@
+type,email,password,rent eligible
+student,abc@gmail.com,AstrongPS@12,true
+visitor,bbc@gmail.com,AstrongPS@12,true
+faculty,ccc@gmail.com,AstrongPS@12,true
+staff,ggg@gmail.com,AstrongPS@12,true

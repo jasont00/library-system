@@ -39,7 +39,7 @@ public class LibrarySystemGUI extends Application {
         titleLabel.setAlignment(Pos.CENTER);
         HBox roleBox = new HBox();
         Label roleLabel = new Label("Role        ");
-        ObservableList<String> options = FXCollections.observableArrayList("Student", "Faulty", "Staff","Visitor");
+        ObservableList<String> options = FXCollections.observableArrayList("student", "faulty", "staff","visitor");
         ComboBox<String> roleComboBox = new ComboBox<>(options);
         roleComboBox.setPrefWidth(150);
         roleBox.getChildren().addAll(roleLabel, roleComboBox);
@@ -84,10 +84,7 @@ public class LibrarySystemGUI extends Application {
 
         if(result){
             // User Data
-            User logginedUser = new User();
-            logginedUser.setEmail(email);
-            logginedUser.setType(type);
-            logginedUser.setPassword(passwd);
+            User logginedUser = new User(type,email,passwd);
             UserSession.getInstance().setLoggedInUser(logginedUser);
 
             // Go to the Main Scene
@@ -157,12 +154,10 @@ public class LibrarySystemGUI extends Application {
         // Add all MenuItem
         menuBar.getMenus().addAll(mainMenu, facultyMenu, managersMenu, studentMenu);
 
-        // 内容显示区域
         Label contentLabel = new Label("Welcome to the Library");
         VBox contentBox = new VBox(contentLabel);
         root.setCenter(contentBox);
 
-        // 菜单项事件处理
         rent.setOnAction(e -> root.setCenter(new RentView().createView()));
         search.setOnAction(e -> root.setCenter(new SearchView().createView()));
         news.setOnAction(e -> root.setCenter(new NewsView().createView()));

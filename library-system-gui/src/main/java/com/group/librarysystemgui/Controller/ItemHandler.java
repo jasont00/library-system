@@ -1,6 +1,7 @@
 package com.group.librarysystemgui.Controller;
 
 import com.group.librarysystemgui.Model.Item;
+import com.group.librarysystemgui.Model.ItemFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,28 @@ public class ItemHandler {
      */
     public static List<Item> getAllItems(){
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("Introduction to Java","Book",10));
-        items.add(new Item("Fashion","Magazine",10));
-        items.add(new Item("Tayor","CD",10));
+
+        try{
+            Item itemone = ItemFactory.getItem("textbook","Introduction to Java",10,"N/A",true);
+            items.add(itemone);
+        } catch (Exception e) {
+
+        }
+
+        try{
+            Item itemtwo = ItemFactory.getItem("magazine","Daily Fashion",10,"N/A",true);
+            items.add(itemtwo);
+        } catch (Exception e) {
+
+        }
+
+
+        try{
+            Item itemthree = ItemFactory.getItem("cd","taylor",10,"N/A",true);
+            items.add(itemthree);
+        } catch (Exception e) {
+
+        }
         return items;
     }
 

@@ -21,6 +21,8 @@ import java.util.Map;
  * that a user is currently renting and the due date for returning the books.
  * It should also prompt warnings about any book that is not returned yet
  * and it is approaching (less than 24 hours until the due date) or past the due date.
+ *
+ * TODO: add the penalty
  */
 public class  ContentView {
     public BorderPane createView() {

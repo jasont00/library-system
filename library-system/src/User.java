@@ -190,4 +190,12 @@ class User implements TextBookObserver {
 	public String toString() {
 		return "User [email=" + email + ", type=" + type + ", password=" + password + "]";
 	}
+
+	public List<Notification> getNotificationList() {
+		return notificationList;
+	}
+
+	public void setNotificationList(List<Notification> notificationList) {
+		this.notificationList = notificationList;
+	}
 }
