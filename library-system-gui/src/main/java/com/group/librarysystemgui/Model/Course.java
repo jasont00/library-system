@@ -57,4 +57,3 @@ public class Course {
         this.textbooks = textbooks;
     }
 }
-
