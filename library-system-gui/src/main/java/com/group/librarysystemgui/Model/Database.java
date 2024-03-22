@@ -85,9 +85,10 @@ public class Database {
     }
 
     //adding an item to the arraylist
-    public void loaditem(Item item){
+    public void loaditem(Item item) throws Exception{
         item.setId(++IDS);
         items.add(item);
+        updateitem();
     }
     //adding an user to the arraylist
     public void addUser(User user) throws Exception {
