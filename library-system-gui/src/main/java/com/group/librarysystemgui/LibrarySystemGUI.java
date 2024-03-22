@@ -1,6 +1,7 @@
 package com.group.librarysystemgui;
 
 import com.group.librarysystemgui.Controller.RegisterAndLoginController;
+import com.group.librarysystemgui.Model.Database;
 import com.group.librarysystemgui.Model.User;
 import com.group.librarysystemgui.View.*;
 import javafx.application.Application;
@@ -83,8 +84,12 @@ public class LibrarySystemGUI extends Application {
         boolean result = registerAndLoginController.login(email,passwd);
 
         if(result){
-            // User Data
-            User logginedUser = new User(type,email,passwd);
+            // this is to fix the potential problem, the logginedUser should from the database to keep the same
+            // not the new User
+            User logginedUser = Database.getDatabase().getUser(email);
+            if(logginedUser==null){
+                logginedUser = new User(type,email,passwd);
+            }
             UserSession.getInstance().setLoggedInUser(logginedUser);
 
             // Go to the Main Scene

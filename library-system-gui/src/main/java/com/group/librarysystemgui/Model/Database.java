@@ -88,7 +88,6 @@ public class Database {
     public void loaditem(Item item){
         item.setId(++IDS);
         items.add(item);
-
     }
     //adding an user to the arraylist
     public void addUser(User user) throws Exception {
@@ -223,6 +222,15 @@ public class Database {
             }
         }
         return result;
+    }
+
+    public User getUser(String email){
+        for (User user:this.users) {
+            if(user.getEmail().equals(email)){
+                return user;
+            }
+        }
+        return null;
     }
 
 }
