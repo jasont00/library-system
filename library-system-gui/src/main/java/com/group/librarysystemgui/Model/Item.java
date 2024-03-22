@@ -68,6 +68,9 @@ public abstract class Item {
     public boolean getRentable(){
         return rentable;
     }
+    public String getOwner() {
+    	return null;
+    }
     public void setRentable(Boolean availableToRent){
         this.rentable = availableToRent;
     }
