@@ -129,12 +129,13 @@ public class LibrarySystemGUI extends Application {
         // MeanBar
         MenuBar menuBar = new MenuBar();
         Menu mainMenu = new Menu("Main");
+        MenuItem main = new MenuItem("Main");
         MenuItem rent = new MenuItem("Rent");
         MenuItem search = new MenuItem("Search");
         MenuItem news = new MenuItem("News");
         MenuItem request = new MenuItem("Request");
         MenuItem purchase = new MenuItem("Purchase");
-        mainMenu.getItems().addAll(rent, search, news, request, purchase);
+        mainMenu.getItems().addAll(main,rent, search, news, request, purchase);
 
         // Faculty Menu
         Menu facultyMenu = new Menu("Faculty");
@@ -158,6 +159,7 @@ public class LibrarySystemGUI extends Application {
         VBox contentBox = new VBox(contentLabel);
         root.setCenter(contentBox);
 
+        main.setOnAction(e->root.setCenter(new ContentView().createView()));
         rent.setOnAction(e -> root.setCenter(new RentView().createView()));
         search.setOnAction(e -> root.setCenter(new SearchView().createView()));
         news.setOnAction(e -> root.setCenter(new NewsView().createView()));

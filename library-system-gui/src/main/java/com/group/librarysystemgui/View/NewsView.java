@@ -3,17 +3,17 @@ package com.group.librarysystemgui.View;
 import com.group.librarysystemgui.Controller.NewsletterHandler;
 import com.group.librarysystemgui.Model.Newsletter;
 import com.group.librarysystemgui.UserSession;
+import com.group.librarysystemgui.View.components.Component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -53,13 +53,15 @@ public class NewsView extends ContentView {
                 cancelButton.setOnAction(event ->{
                     Newsletter currentItem = getItem();
                     NewsletterHandler.Cancel(UserSession.getInstance().getLoggedInUser(),currentItem);
+                    Component.showAlert(Alert.AlertType.INFORMATION,"CANCEL SUBSCRIPTION","You Cancel Subscription of: "+currentItem.getName());
                 });
 
                 openButton.setOnAction(event -> {
                     Newsletter currentItem = getItem();
                     System.out.println("OPENING: " + currentItem.getName());
                     //TODO: not sure how to open the frame to display web information properly
-                    currentItem.open();
+                    String message = currentItem.open(); // 假设这会返回一个String类型的消息
+                    showDialog(currentItem.getName(),message);
                 });
 
                 HBox.setHgrow(name, Priority.ALWAYS);
@@ -100,6 +102,7 @@ public class NewsView extends ContentView {
                 subButton.setOnAction(event -> {
                     Newsletter currentItem = getItem();
                     NewsletterHandler.SubScribe(UserSession.getInstance().getLoggedInUser(),currentItem);
+                    Component.showAlert(Alert.AlertType.INFORMATION,"SUBSCRIPTION","You have New Subscription of: "+currentItem.getName());
                 });
                 HBox.setHgrow(name, Priority.ALWAYS);
                 content.getChildren().addAll(subButton,name,price,publisher);
@@ -126,4 +129,20 @@ public class NewsView extends ContentView {
         view.setCenter(vbox);
         return view;
     }
+    private void showDialog(String name, String message) {
+        Stage stage = new Stage();
+
+        stage.setTitle("Newsletter Content:"+name);
+
+        Text text = new Text(message);
+        text.setWrappingWidth(400); // 设置文本换行宽度
+
+        ScrollPane scrollPane = new ScrollPane(text);
+        scrollPane.setFitToWidth(true);
+
+        Scene scene = new Scene(scrollPane, 450, 300);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

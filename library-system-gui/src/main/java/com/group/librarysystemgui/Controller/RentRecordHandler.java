@@ -1,6 +1,7 @@
 package com.group.librarysystemgui.Controller;
 
 import com.group.librarysystemgui.Model.Item;
+import com.group.librarysystemgui.Model.PhysicalItem;
 import com.group.librarysystemgui.Model.User;
 
 import java.time.LocalDate;
@@ -27,11 +28,15 @@ public class RentRecordHandler {
      * @return map as list (key is book title,value is due date)
      */
     public static Map<String,String> listRentRecord(User user){
-        Map<String, String> rentalsMap = Map.of(
+        Map<String, String> rentalsMap = new java.util.HashMap<>(Map.of(
                 "Book 1", LocalDate.now().plusDays(5).toString(),
                 "Book 2", LocalDate.now().minusDays(1).toString(),
                 "Book 3", LocalDate.now().toString()
-        );
+        ));
+
+        for (Map.Entry<PhysicalItem, LocalDate> entry : user.rentedItems.entrySet()) {
+            rentalsMap.put(entry.getKey().getName(),entry.getValue().toString());
+        }
         return rentalsMap;
     }
 
@@ -54,7 +59,11 @@ public class RentRecordHandler {
      * @return count
      */
     public static int countOfRent(User user){
-        return 5;
+        return user.countRentSize();
+    }
+
+    public static int countOfOverLost(User user){
+        return user.countLost();
     }
 
     /**
@@ -65,8 +74,8 @@ public class RentRecordHandler {
      * @param item
      * @return
      */
-    public static boolean rentItem(User user, Item item){
-        return true;
+    public static String rentItem(User user, PhysicalItem item){
+        return user.rentItem(item);
     }
 
 }

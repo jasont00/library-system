@@ -1,5 +1,6 @@
 package librarysystem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,17 +37,21 @@ public class Search {
 		}
 		
 		
-		
+
 	}
 //	--> can do it through Test Cases till the GUI is implemented which then this would prompt user for result through sys.out
 	
 	
-public String filterSearch(String key, String itemType) {
-		
-		if (Database.getDatabase().checkstock(key)> 0) {
-			return key
+    public String filterSearch(String key, String itemType){
+
+		try {
+			if (Database.getDatabase().checkstock(key)> 0) {
+				return key
+			}
+			else return null;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		else return null;  
 	}
 	public void search(String key) {
 		
@@ -58,8 +63,7 @@ public String filterSearch(String key, String itemType) {
 			ArrayList<Item> similarList = checkSimilar(key); 
 			//return options
 		}
-				
- 	
+
 	}
 	
 	public ArrayList<Item> checkSimilar(String key){
@@ -91,7 +95,7 @@ public String filterSearch(String key, String itemType) {
 		}
 		return dist[key.length()][word.length()];
 	}
-	
+
 	
 
 }

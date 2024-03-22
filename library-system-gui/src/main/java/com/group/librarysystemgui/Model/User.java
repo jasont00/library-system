@@ -16,6 +16,7 @@ public class User implements TextBookObserver {
 	private String password = " ";
 	Admin admin = new Admin();
 	public boolean rentEligible;
+	List<Newsletter> subscriptions = new ArrayList<>();
 	List<Item> ownedItems = new ArrayList<>();
 	List<Course> courses = new ArrayList<>();
 	List<Notification> notificationList = new ArrayList<>();
@@ -24,7 +25,7 @@ public class User implements TextBookObserver {
 //	List<PhysicalItem> rentedItems = new ArrayList<>();
 
 	// Key is the item rented, Value is the duedate
-	HashMap<PhysicalItem, LocalDate> rentedItems = new HashMap<>();
+	public HashMap<PhysicalItem, LocalDate> rentedItems = new HashMap<>();
 
 	public User(String type,String email,String password){
 		this.type = type;
@@ -66,6 +67,10 @@ public class User implements TextBookObserver {
 			}
 		}
 		return lostCount;
+	}
+
+	public int countRentSize(){
+		return rentedItems.size();
 	}
 
 	public boolean checkPrivileges(){
@@ -139,21 +144,22 @@ public class User implements TextBookObserver {
 		return rentEligible;
 	}
 
-	public void rentItem(PhysicalItem i) {
+	public String rentItem(PhysicalItem i) {
 		if(i.rented) {
-			System.out.println("This item is already rented");
+			return "This item is already rented";
 		}
 
 		else if(i.getRentable() && rentedItems.size()<10 ) {
 			LocalDate dueDate = LocalDate.now().plus(Period.ofMonths(1));
 			rentedItems.put(i,dueDate);
 			i.setRented(true);
+			return "Successfully Rent the Item: " + i.getName();
 		}
 		else if (!i.getRentable()){
-			System.out.println("This item is not rentable");
+			return "This item is not rentable";
 		}
 		else {
-			System.out.println("You have too many books!");
+			return "You have too many books!";
 		}
 	}
 
@@ -162,11 +168,15 @@ public class User implements TextBookObserver {
 	}
 
 	public void subscribe(Newsletter n) {
-		ownedItems.add(n);
+		subscriptions.add(n);
 	}
 
 	public void cancel(Newsletter n) {
-		ownedItems.remove(n);
+		subscriptions.remove(n);
+	}
+
+	public List<Newsletter> listSubscription(){
+		return subscriptions;
 	}
 
 //	public void requestItem(String name, String type, String publisher, String price, boolean rentable) {

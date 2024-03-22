@@ -3,13 +3,12 @@ package com.group.librarysystemgui.View;
 import com.group.librarysystemgui.Controller.ItemHandler;
 import com.group.librarysystemgui.Controller.RentRecordHandler;
 import com.group.librarysystemgui.Model.Item;
+import com.group.librarysystemgui.Model.PhysicalItem;
 import com.group.librarysystemgui.UserSession;
+import com.group.librarysystemgui.View.components.Component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -27,7 +26,7 @@ public class RentView extends ContentView {
     public BorderPane createView() {
         BorderPane view = new BorderPane();
 
-        List<Item> items = ItemHandler.getAllItems();
+        List<PhysicalItem> items = ItemHandler.getAlPhysicallItems();
         int countOfRent = RentRecordHandler.countOfRent(UserSession.getInstance().getLoggedInUser());
         int countofOverDue = RentRecordHandler.countOfOverDue(UserSession.getInstance().getLoggedInUser());
 
@@ -35,9 +34,9 @@ public class RentView extends ContentView {
                 + " | RENT: "+ countOfRent +" / 10  |   OVERDUE:"+ countofOverDue);
 
 
-        ObservableList<Item> rentals = FXCollections.observableArrayList(items);
+        ObservableList<PhysicalItem> rentals = FXCollections.observableArrayList(items);
 
-        ListView<Item> listView = new ListView<>(rentals);
+        ListView<PhysicalItem> listView = new ListView<>(rentals);
         listView.setCellFactory(param -> new ListCell<>() {
             private final HBox content;
             private final Text name;
@@ -52,15 +51,15 @@ public class RentView extends ContentView {
                 rentButton.setOnAction(event -> {
                     Item currentItem = getItem();
                     System.out.println("Renting: " + currentItem.getName());
-                    RentRecordHandler.rentItem(UserSession.getInstance().getLoggedInUser(), currentItem);
-
+                    String result = RentRecordHandler.rentItem(UserSession.getInstance().getLoggedInUser(), (PhysicalItem) currentItem);
+                    Component.showAlert(Alert.AlertType.INFORMATION,"Rent Information",result);
                 });
                 HBox.setHgrow(name, Priority.ALWAYS);
                 content.getChildren().addAll(rentButton, type, name);
             }
 
             @Override
-            protected void updateItem(Item item, boolean empty) {
+            protected void updateItem(PhysicalItem item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (item == null || empty) {
@@ -75,7 +74,6 @@ public class RentView extends ContentView {
 
         VBox vbox = new VBox(10);
         vbox.getChildren().addAll(label, listView);
-
         view.setCenter(vbox);
         return view;
     }

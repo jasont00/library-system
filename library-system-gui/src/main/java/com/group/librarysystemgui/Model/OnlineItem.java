@@ -14,9 +14,9 @@ public class OnlineItem extends Item{
         this.publisher = publisher;
     }
 
-    public void open() {
+    public String open() {
         // This method should display the book contents
-        System.out.println("(Display book contents here)");
+        return "(Display book contents here";
     }
 
     public String getPublisher() {

@@ -1,6 +1,8 @@
 package com.group.librarysystemgui.Controller;
 
 
+import com.group.librarysystemgui.Model.Database;
+import com.group.librarysystemgui.Model.Item;
 import com.group.librarysystemgui.Model.Newsletter;
 import com.group.librarysystemgui.Model.User;
 
@@ -22,9 +24,7 @@ public class NewsletterHandler {
      * @return
      */
     public static List<Newsletter> getAllSubscription(User user){
-        ArrayList<Newsletter> subscriptions= new ArrayList<>();
-        subscriptions.add(new Newsletter("NY-Times",10,"NY"));
-        return subscriptions;
+        return user.listSubscription();
     }
 
     /**
@@ -36,6 +36,12 @@ public class NewsletterHandler {
         newsletters.add(new Newsletter("NY-Times",10,"NY"));
         newsletters.add(new Newsletter("NZ-Times",10,"NZ"));
         newsletters.add(new Newsletter("NQ-Times",10,"NQ"));
+
+        for(Item item:Database.getDatabase().items){
+            if(item.getType().equals("newsletter")){
+                newsletters.add((Newsletter) item);
+            }
+        }
         return newsletters;
     }
 
@@ -63,6 +69,7 @@ public class NewsletterHandler {
      * @return
      */
     public static boolean SubScribe(User user, Newsletter newsletter){
+        user.subscribe(newsletter);
         return true;
     }
 
@@ -73,6 +80,7 @@ public class NewsletterHandler {
      * @return
      */
     public static boolean Cancel(User user, Newsletter newsletter){
+        user.cancel(newsletter);
         return true;
     }
 

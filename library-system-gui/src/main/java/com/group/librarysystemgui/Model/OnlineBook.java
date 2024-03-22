@@ -12,8 +12,8 @@ public class OnlineBook extends OnlineItem{
         super.setType("onlinebook");
     }
 
-    public void open() {
+    public String open() {
         // This method should display the textbook contents
-        System.out.println("(Display textbook contents here)");
+        return "(Display textbook contents here)";
     }
 }

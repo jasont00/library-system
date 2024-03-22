@@ -3,7 +3,7 @@ package com.group.librarysystemgui.Model;
 import java.util.HashMap;
 
 public class PhysicalItemRepo {
-    static HashMap<Integer, PhysicalItem> inventory = new HashMap<Integer, PhysicalItem>();			// stores items by their ID
+    public static HashMap<Integer, PhysicalItem> inventory = new HashMap<Integer, PhysicalItem>();			// stores items by their ID
     static HashMap<String, Integer> itemOccurrences = new HashMap<String, Integer>();				// stores quantity of items with the same name
 
     public static HashMap<Integer, PhysicalItem> getInventory() {
