@@ -19,8 +19,6 @@ public class PaymentHandler{
 		Double price = Double.valueOf(Database.getDatabase().search(name, "pay"));
 		return price;
 	}
-	
-	
-	
+
 	
 }

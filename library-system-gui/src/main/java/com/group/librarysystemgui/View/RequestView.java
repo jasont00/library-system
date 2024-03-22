@@ -1,5 +1,6 @@
 package com.group.librarysystemgui.View;
 
+import com.group.librarysystemgui.Controller.RequestHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -7,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+import java.util.Objects;
 
 public class RequestView extends ContentView {
 
@@ -37,6 +40,7 @@ public class RequestView extends ContentView {
             String selectedType = bookTypeComboBox.getValue();
             String priorityMessage = getPriorityMessage(selectedType);
             priorityNotificationLabel.setText(priorityMessage);
+            RequestHandler.requestBook(bookNameField.getText(), Objects.equals(priorityMessage, "Your request has HIGH priority."));
         });
 
         gridPane.getChildren().addAll(bookNameField, bookTypeComboBox, submitButton, priorityNotificationLabel);

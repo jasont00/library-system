@@ -2,6 +2,7 @@ package com.group.librarysystemgui.Controller;
 
 import com.group.librarysystemgui.Model.Course;
 import com.group.librarysystemgui.Model.Notification;
+import com.group.librarysystemgui.Model.Textbook;
 import com.group.librarysystemgui.Model.User;
 
 import java.util.ArrayList;
@@ -22,8 +23,18 @@ public class TrackHandler {
      * @param user
      * @return
      */
-    public static List<Course> trackCourseTextBooks(User user){
-        return new ArrayList<>();
+    public static List<Course> trackCourse(User user){
+        // sample data
+        return user.getCourses();
+    }
+
+    public static List<Textbook> trackCourseTextBooks(User user){
+        // sample data
+        List<Textbook> items = new ArrayList<>();
+        for(Course c:trackCourse(user)){
+            items.addAll(c.getTextbooks());
+        }
+        return items;
     }
 
     /**

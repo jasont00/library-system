@@ -1,6 +1,7 @@
 package com.group.librarysystemgui.Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author Jason
@@ -13,8 +14,15 @@ public class Course {
     public Course(String n, String c) {
         name = n;
         code = c;
-
         textbooks = new ArrayList<Textbook>();
+    }
+
+    public Course(String n, ArrayList<Textbook> textbookList) {
+        name = n;
+        textbooks = textbookList;
+        for(Textbook book:textbookList){
+            TextBookTracker.getInstance().addTextbook(book);
+        }
     }
 
     public ArrayList<Textbook> getTextbooks() {

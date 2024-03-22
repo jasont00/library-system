@@ -33,7 +33,12 @@ public class ItemFactory {
             item = new Magazine(name, price, rentable);
             PhysicalItemRepo.addItem((PhysicalItem) item);
         } else if (type.equalsIgnoreCase("textbook")) {
-            item = new Textbook(name, price);
+            if(name.contains("%")){
+                String[] items = name.split("%");
+                item = new Textbook(items[0], price,Integer.parseInt(items[1]));
+            }else{
+                item = new Textbook(name, price);
+            }
         } else if (type.equalsIgnoreCase("newsletter")) {
             item = new Newsletter(name, price, publisher);
         } else if (type.equalsIgnoreCase("onlinebook")) {

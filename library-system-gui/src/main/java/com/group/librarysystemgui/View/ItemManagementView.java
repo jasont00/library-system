@@ -4,6 +4,7 @@ import com.group.librarysystemgui.Controller.ItemHandler;
 import com.group.librarysystemgui.Controller.RentRecordHandler;
 import com.group.librarysystemgui.Model.Item;
 import com.group.librarysystemgui.UserSession;
+import com.group.librarysystemgui.View.components.Component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -57,7 +58,7 @@ public class ItemManagementView extends ContentView{
         GridPane.setConstraints(addButton, 1, 5);
         addButton.setOnAction(e -> {
             ItemHandler.addItem(nameInput.getText(), typeInput.getText(),priceInput.getText(),locationInput.getText(),purchaseInput.getText());
-            System.out.println("Item Added: " + nameInput.getText());
+            Component.showAlert(Alert.AlertType.INFORMATION,"Item Management","You Add Item:"+nameInput.getText());
             nameInput.clear();
             typeInput.clear();
             priceInput.clear();
@@ -92,11 +93,13 @@ public class ItemManagementView extends ContentView{
                 enableButton.setOnAction(event -> {
                     Item currentItem = getItem();
                     currentItem.setRentable(true);
+                    Component.showAlert(Alert.AlertType.WARNING,"Item Management","You Enable Item:"+currentItem.getName());
                 });
 
                 disableButton.setOnAction(event ->{
                     Item currentItem = getItem();
                     currentItem.setRentable(false);
+                    Component.showAlert(Alert.AlertType.WARNING,"Item Management","You Disable Item:"+currentItem.getName());
                 });
 
                 HBox.setHgrow(name, Priority.ALWAYS);

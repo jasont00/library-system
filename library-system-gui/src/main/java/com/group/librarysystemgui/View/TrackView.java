@@ -12,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class TrackView extends ContentView {
@@ -23,11 +22,7 @@ public class TrackView extends ContentView {
         Label label = new Label("Keeping Tracking of Following Textbooks:");
         Label label2 = new Label("Notifications of New Edition");
 
-        List<Course> courses = Arrays.asList(
-                new Course("Course 1", Arrays.asList(new Textbook("Textbook 1",10)).toString()),
-                new Course("Course 2", Arrays.asList(new Textbook("Textbook 2", 10)).toString())
-        );
-
+        List<Course> courses = TrackHandler.trackCourse(UserSession.getInstance().getLoggedInUser());
         ObservableList<Course> observableCourses = FXCollections.observableArrayList(courses);
 
         ListView<Course> coursesListView = new ListView<>(observableCourses);
@@ -38,11 +33,11 @@ public class TrackView extends ContentView {
                 if (empty || course == null) {
                     setText(null);
                 } else {
-                    String displayText = course.getName() + ": ";
+                    StringBuilder displayText = new StringBuilder(course.getName() + ": ");
                     for (Textbook textbook : course.getTextbooks()) {
-                        displayText += textbook.getName();
+                        displayText.append(textbook.getName());
                     }
-                    setText(displayText);
+                    setText(displayText.toString());
                 }
             }
         });

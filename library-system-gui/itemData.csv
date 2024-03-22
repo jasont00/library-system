@@ -1,6 +1,5 @@
 name,id,type,price,publisher,rentable
-Book1,1,textbook,10,AZZ,true
-Book2,2,textbook,20,BCC,true
-Fashion,3,magazine,10,CAA,true
-Taylor,4,CD,141,Music.Inc, true
-NC-Times,4,newsletter,20,New York, true
+Book1,3,textbook,10.0,N/A
+Book2,4,textbook,20.0,N/A
+NC-Times,5,newsletter,20.0,N/A
+Introduction to Java,6,textbook,21.0,N/A

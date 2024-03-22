@@ -31,5 +31,14 @@ public class ItemHandler {
 
     // TODO
     public static void addItem(String name, String type, String price, String location, String purchase) {
+        try {
+            Item item = ItemFactory.saveItem(type,name, Double.parseDouble(price),"N/A",true);
+            if(type.equals("textbook") && name.contains("%")){
+                name = name.split("%")[0];
+                TextBookTracker.getInstance().addTextbook((Textbook) item);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

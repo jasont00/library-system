@@ -20,8 +20,8 @@ public class Textbook extends PhysicalItem{
         super.type="textbook";
     }
 
-    public void open() {
-        System.out.println("(Display textbook contents here)");
+    public String open() {
+        return "(Display textbook contents here)";
     }
 
     public String getPublisher(){

@@ -1,5 +1,7 @@
 package com.group.librarysystemgui.Model;
 
+import com.group.librarysystemgui.Controller.TrackHandler;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
@@ -32,6 +34,18 @@ public class User implements TextBookObserver {
 		this.email = email;
 		this.password = password;
 		this.rentEligible = true;
+
+		// Fetch the course from the database
+		courses = Arrays.asList(
+				new Course("Course 1", new ArrayList<>(List.of(new Textbook("Textbook1", 10)))),
+				new Course("Course 2", new ArrayList<>(List.of(new Textbook("Textbook2",10))))
+		);
+
+		for(Course c:courses){
+			for(Textbook b:c.textbooks){
+				TextBookTracker.getInstance().observer(b.name,this);
+			}
+		}
 	}
 
 	public void setRentEligible(Boolean rent){
@@ -89,6 +103,10 @@ public class User implements TextBookObserver {
 		else {
 			System.out.println("Cannot add course");
 		}
+	}
+
+	public List<Course> getCourses(){
+		return courses;
 	}
 
 	public void viewCourses() { //Only Faculty type can use this
@@ -191,7 +209,7 @@ public class User implements TextBookObserver {
 
 	@Override
 	public void update(TextBookSubject textBookSubject) {
-		if(!this.type.equals("faculty")){
+		if(!this.type.equals("faulty")){
 			// do nothing.
 			return;
 		}

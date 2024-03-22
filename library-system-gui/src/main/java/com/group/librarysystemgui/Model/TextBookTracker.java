@@ -53,7 +53,7 @@ public class TextBookTracker {
     private static TextBookTracker instance;
 
     private TextBookTracker() {}
-    private List<TextBookSubject> textbooks;
+    private List<TextBookSubject> textbooks = new ArrayList<>();
 
 
     public static TextBookTracker getInstance() {
@@ -74,11 +74,19 @@ public class TextBookTracker {
         // check the existing textbook whether to notify
         for(TextBookSubject subject:this.textbooks){
             if(subject.textbook.name.equals(textbook.name)){
-                subject.notifyObservers();
                 newSubject.setTextBookObserver(subject.textBookObserver);
+                newSubject.notifyObservers();
             }
         }
         this.textbooks.add(newSubject);
+    }
+
+    public void observer(String textbookName,User user){
+        for(TextBookSubject textBookSubject:textbooks){
+            if(textBookSubject.textbook.name.equals(textbookName)){
+                textBookSubject.attach(user);
+            }
+        }
     }
 
     public void updateTextBookAvailability(int textbookId,boolean available){
@@ -90,9 +98,11 @@ public class TextBookTracker {
         }
     }
 
-    public void notifyObservers(){
+    public void notifyObservers(String textbookName){
         for(TextBookSubject tb:this.textbooks){
-            tb.notifyObservers();
+            if(tb.textbook.name.equals(textbookName)){
+                tb.notifyObservers();
+            }
         }
     }
 }

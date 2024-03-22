@@ -129,7 +129,7 @@ public class NewsView extends ContentView {
         view.setCenter(vbox);
         return view;
     }
-    private void showDialog(String name, String message) {
+    private static void showDialog(String name, String message) {
         Stage stage = new Stage();
 
         stage.setTitle("Newsletter Content:"+name);
