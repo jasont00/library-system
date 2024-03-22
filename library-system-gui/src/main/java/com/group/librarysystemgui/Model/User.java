@@ -16,7 +16,7 @@ public class User implements TextBookObserver {
 	private String type = " ";
 	private String email = " ";
 	private String password = " ";
-	private boolean balance = 100;
+	private double balance = 100;
 	Admin admin = new Admin();
 	public boolean rentEligible;
 	List<Newsletter> subscriptions = new ArrayList<>();
