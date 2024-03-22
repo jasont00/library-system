@@ -16,6 +16,7 @@ public class User implements TextBookObserver {
 	private String type = " ";
 	private String email = " ";
 	private String password = " ";
+	private boolean balance = 100;
 	Admin admin = new Admin();
 	public boolean rentEligible;
 	List<Newsletter> subscriptions = new ArrayList<>();
@@ -202,8 +203,15 @@ public class User implements TextBookObserver {
 //	}
 
 //	public void purchase(Item i)  throws Exception {
-//		ownedItems.add(i);
-//		PaymentHandler.getPaymentHandler().getPrice(i.getName());
+//		if(balance >= i.getPrice()) {
+//			ownedItems.add(i);
+//			balance -= i.getPrice();
+//			PaymentHandler.getPaymentHandler().getPrice(i.getName());
+//		}
+//		else {
+//			System.out.println("You don't have enough money");
+//		}
+//		
 //	}
 
 
