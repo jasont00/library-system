@@ -1,4 +1,4 @@
-Name,ID,Type,Price,Publisher,Rentable,Owner
+name,id,type,price,publisher,rentable,owner
 Book1,3,textbook,10,N/A,TRUE,
 Book2,4,textbook,20,N/A,TRUE,
 NC-Times,5,newsletter,20,N/A,FALSE,
