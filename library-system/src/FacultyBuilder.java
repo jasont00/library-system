@@ -2,15 +2,15 @@ package librarysystem;
 
 class FacultyBuilder extends UserBuilder {
 
-	public void buildType() {
+	public void buildType() throws Exception{
 		user.setType("faculty");
 	}
 
-	public void buildEmail() {
+	public void buildEmail() throws Exception{
 		user.setEmail("facultyEmail");
 	}
 
-	public void buildPassword() {
+	public void buildPassword() throws Exception{
 		user.setPassword("facultysPassword");
 	}
 	
