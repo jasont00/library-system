@@ -168,7 +168,7 @@ public class User implements TextBookObserver {
 			return "This item is already rented";
 		}
 
-		else if(i.getRentable() && rentedItems.size()<10 ) {
+		else if(i.getRentable() && rentedItems.size()<10 && rentEligible == true) {
 			LocalDate dueDate = LocalDate.now().plus(Period.ofMonths(1));
 			rentedItems.put(i,dueDate);
 			i.setRented(true);
