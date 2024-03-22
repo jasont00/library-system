@@ -170,7 +170,7 @@ public class Database {
                     csvOutput.write((u.getPublisher()));
                     csvOutput.endRecord();
                 }
-                else if(u.getClass().equals(PhysicalItem.class)|| u.getClass().equals(CD.class)|| u.getClass().equals(Textbook.class)|| u.getClass().equals(Magazine.class)|| u.getClass().equals(Magazine.class)) {
+                else if(u.getClass().equals(PhysicalItem.class)|| u.getClass().equals(CD.class)|| u.getClass().equals(Textbook.class)|| u.getClass().equals(Magazine.class)) {
                     csvOutput.write(u.getName());
                     csvOutput.write(String.valueOf(u.getId()));
                     csvOutput.write(u.getType());
