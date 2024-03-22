@@ -9,7 +9,7 @@ public class ItemFactory {
 			return new OnlineItem(name, type, price, publisher);
 		}
 		else if (c.equalsIgnoreCase("physicalitem")) {
-			if (PhysicalItemRepo.itemOccurrences.get(name) > 20) {	// if there's already 20 items with the same name, return void;
+			if (PhysicalItemRepo.countQuantity(name) > 20) {	// if there's already 20 items with the same name, return void;
 				System.out.println("There are already 20 copies of an item with the same name.");
 				return null;
 			}
