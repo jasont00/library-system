@@ -2,7 +2,7 @@ package librarysystem;
 
 class StudentBuilder extends UserBuilder {
 	
-	public void buildType() {
+	public void buildType() throws Exception{
 		user.setType("student");
 	}
 
@@ -10,7 +10,7 @@ class StudentBuilder extends UserBuilder {
 		user.setEmail("studentsEmail");
 	}
 
-	public void buildPassword() {
+	public void buildPassword() throws Exception{
 		user.setPassword("studentsPassword");
 	}
 
