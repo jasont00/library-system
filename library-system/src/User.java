@@ -101,19 +101,23 @@ class User implements TextBookObserver {
         }
     }
 
-	public void setType(String s) {
+	public void setType(String s) throws Exception {
 		this.type = s;
+		Database.getDatabase().updateuser();
 	}
 
 	public void setEmail(String s) throws Exception {
 		if(RegistrationHandler.getRegistrationHandler().verifyEmail(s)) {
 			this.email = s;
+			Database.getDatabase().updateuser();
+
 		}
 	}
 
-	public void setPassword(String s) {
+	public void setPassword(String s) throws Exception {
 		if(RegistrationHandler.getRegistrationHandler().checkStrongPW(s)) {
 			this.password = s;
+			Database.getDatabase().updateuser();
 		}
 	}
 	
