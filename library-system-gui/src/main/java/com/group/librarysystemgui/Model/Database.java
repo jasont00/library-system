@@ -26,8 +26,8 @@ public class Database {
     public static Database getDatabase() {
         if(instance==null) {
             instance = new Database();
-            instance.loadItemData();
             instance.loadUserData();
+            instance.loadItemData();
         }
         return instance;
     }
@@ -40,17 +40,20 @@ public class Database {
         } catch (IOException e) {
             return;
         }
-
         while(true){
             try {
                 if (!reader.readRecord()) break;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             try {
                 Item item = ItemFactory.getItem(reader.get("type"),reader.get("name"),Double.parseDouble(reader.get("price")),reader.get("publisher"),Boolean.parseBoolean(reader.get("rentable")));
                 instance.items.add(item);
+                for(User u:users) {
+                	if(u.getEmail().equalsIgnoreCase(reader.get("owner"))){
+                		u.rentItem((PhysicalItem)item);
+                	}
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -89,6 +92,7 @@ public class Database {
         item.setId(++IDS);
         items.add(item);
         updateitem();
+
     }
     //adding an user to the arraylist
     public void addUser(User user) throws Exception {
@@ -150,6 +154,7 @@ public class Database {
             csvOutput.write("price");
             csvOutput.write("publisher");
             csvOutput.write("rentable");
+            csvOutput.write("owner");
 
             csvOutput.endRecord();
 
@@ -157,22 +162,22 @@ public class Database {
             // write out a few records
             //going through the arraylist and writing the info to the file
             for(Item u: items){
-                if(u.getClass().equals(OnlineItem.class) || u.getClass().equals(Newsletter.class)|| u.getClass().equals(Textbook.class)) {
+                if(u.getClass().equals(OnlineItem.class) || u.getClass().equals(Newsletter.class)||u.getClass().equals(OnlineBook.class)) {
                     csvOutput.write(u.getName());
                     csvOutput.write(String.valueOf(u.getId()));
                     csvOutput.write(u.getType());
                     csvOutput.write(String.valueOf(u.getPrice()));
-//                    csvOutput.write((u.getPublisher()));
-                    csvOutput.write("N/A");
+                    csvOutput.write((u.getPublisher()));
                     csvOutput.endRecord();
                 }
-                else if(u.getClass().equals(PhysicalItem.class)) {
+                else if(u.getClass().equals(PhysicalItem.class)|| u.getClass().equals(CD.class)|| u.getClass().equals(Textbook.class)|| u.getClass().equals(Magazine.class)|| u.getClass().equals(Magazine.class)) {
                     csvOutput.write(u.getName());
                     csvOutput.write(String.valueOf(u.getId()));
                     csvOutput.write(u.getType());
                     csvOutput.write(String.valueOf(u.getPrice()));
                     csvOutput.write("N/A");
                     csvOutput.write(String.valueOf(u.getRentable()));
+                    csvOutput.write((u.getOwner()));
                     csvOutput.endRecord();
                 }
 
@@ -224,7 +229,6 @@ public class Database {
         }
         return result;
     }
-
     public User getUser(String email){
         for (User user:this.users) {
             if(user.getEmail().equals(email)){
