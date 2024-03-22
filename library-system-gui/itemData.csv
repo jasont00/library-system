@@ -1,22 +1,21 @@
 name,id,type,price,publisher,rentable
-Book1,3,Textbook,10.00, Book Makers, false 
-Book2,4,Textbook,20.00,Book Makers, false
-NC-Times,5,Newsletter,20.00,New York, false
-Introduction to Java,6,Textbook,21.00,Computer s
-The Great Gatsby, 7, PhysicalItem, 30.00, CharlesScribner's Son, true
-Design Patterns for EECS3311, 8, PhysicalItem, 90.00, ComputerScience E., true
-UML for Software Design for EECS3311,9, PhysicalItem, 80.00, ComputerScience E., true
-UML for Software Design for EECS3311,10, TextBook, 45.00, ComputerScience E., false
-Algorithms for EECS3101, 11, PhysicalItem, 87.00, Computer Logic E., true
-Algorithms for EECS3101, 11, Textbook, 55.00, Computer Logic E., false
-Ethics and Technology: Controversies, Questions and Strategies, 12, PhysicalItem, 86.00, ComputerScience E., true
-Ethics and Technology: Controversies, Questions and Strategies, 13, Textbook, 50.00, ComputerScience E., false
-Introduction to Economics package with MyEconLab, 14, PhysicalItem, 100, Economics, true
-Ways of Improving Quality of Life, 15, Newsletter, 30, Well-Being,false
-How to Dress Adequately (withPictures), 16, Newsletter, 30, Well-Being, false
-Words of Wisdom from Jasons at York, 17, Newsletter, 5, Well-Being, false
-Galileo and The Scientific Revolution, 18, Newsletter, 10, History of Modern Science, false
-The Discovery of Insulin, 19, Textbook, 20, History of Modern Science, false
-Tips to Study Efficiently, 20, Newsletter, 21, Study-Tips, false
-
-name,id,type,price,publisher,rentable
+Book1,3,textbook,10,N/A,TRUE
+Book2,4,textbook,20,N/A,TRUE
+NC-Times,5,newsletter,20,N/A,FALSE
+Introduction to Java,6,textbook,30,N/A,TRUE
+The Great Gatsby,7,textbook,30,N/A,TRUE
+Introduction to Java,8,Onlinebooks,40,Computer Science,FALSE
+Design Patterns for EECS3311,9,textbook,80,N/A,TRUE
+UML for Software Design for EECS3311,10,textbook,90,N/A,TRUE
+UML for Software Design for EECS3311,11,Onlinebooks,55,Computer Science,FALSE
+Algorithms for EECS3101,12,textbook,90,N/A,TRUE
+Algorithms for EECS3101,13,Onlinebooks,60,Computer Science,FALSE
+"Ethics and Technology: Controversies, Questions and Strategie",14,textbook,86,N/A,TRUE
+"Ethics and Technology: Controversies, Questions and Strategie",15,Onlinebooks,55,Computer Science,FALSE
+Introduction to Economics package with MyEconLab,16,textbook,100,N/A,TRUE
+Ways of Improving Quality of Life,17,newsletter,20,Well-Being,FALSE
+How to Dress Adequately (withPictures),18,newsletter,15,Well-Being,FALSE
+Words of Wisdom from Jasons at York,19,Newsletter,5,Well-Being,FALSE
+Galileo and The Scientific Revolution,20,textbook,77,N/A,TRUE
+The Discovery of Insulin,21,Onlinebooks,30,History of Modern Science,FALSE
+Tips to Study Efficiently,22,newsletter,20,Well-Being,false 
