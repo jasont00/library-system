@@ -51,7 +51,9 @@ public class PurchaseView extends ContentView {
                 notificationLabel.setText("Purchase submitted for " + itemname.getText()+
                         " using " + paymentComboBox.getValue() + "with discount of:"+discount.getText());
                 try {
-                    resultLabel.setText("Purchase Result Amount:" + PaymentHandler.getPrice(itemname.getText(),discount.getText()));
+                	if(!Database.getDatabase().search(itemname.getText(), "search").equalsIgnoreCase("don't got it")) {
+                        resultLabel.setText("Purchase Result Amount:" + PaymentHandler.getPrice(itemname.getText(),discount.getText()));
+                	}
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
