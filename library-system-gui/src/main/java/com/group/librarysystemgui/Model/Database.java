@@ -32,6 +32,7 @@ public class Database {
         return instance;
     }
 
+
     public void loadItemData(){
         CsvReader reader = null;
         try {
@@ -48,7 +49,7 @@ public class Database {
             }
             try {
                 Item item = ItemFactory.getItem(reader.get("type"),reader.get("name"),Double.parseDouble(reader.get("price")),reader.get("publisher"),Boolean.parseBoolean(reader.get("rentable")));
-                instance.items.add(item);
+                items.add(item);
                 for(User u:users) {
                 	if(u.getEmail().equalsIgnoreCase(reader.get("owner"))){
                 		u.rentItem((PhysicalItem)item);
@@ -79,7 +80,7 @@ public class Database {
             try {
                 User user = new User(reader.get("type"),reader.get("email"),reader.get("password"));
                 user.setRentEligible(Boolean.parseBoolean(reader.get("rent eligible")));
-                instance.users.add(user);
+                users.add(user);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -168,9 +169,6 @@ public class Database {
                     csvOutput.write(u.getType());
                     csvOutput.write(String.valueOf(u.getPrice()));
                     csvOutput.write((u.getPublisher()));
-                    if(u.getClass().equals(Newsletter.class)) {
-                        csvOutput.write((u.getOwner()));
-                    }
                     csvOutput.endRecord();
                 }
                 else if(u.getClass().equals(PhysicalItem.class)|| u.getClass().equals(CD.class)|| u.getClass().equals(Textbook.class)|| u.getClass().equals(Magazine.class)) {
@@ -226,7 +224,7 @@ public class Database {
         reader.readHeaders();
 
         while(reader.readRecord()){
-            if(reader.get("name").equalsIgnoreCase("gatsby")) {
+            if(reader.get("name").equalsIgnoreCase(name)) {
                 result++;
             }
         }
@@ -240,5 +238,4 @@ public class Database {
         }
         return null;
     }
-
 }
