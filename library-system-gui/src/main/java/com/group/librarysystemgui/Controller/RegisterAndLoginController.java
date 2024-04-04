@@ -12,26 +12,22 @@ import com.group.librarysystemgui.Model.User;
 public class RegisterAndLoginController {
 
     //TODO
-    public static boolean register(String type, String email, String password){
+    public static boolean register(String type, String email, String password) throws Exception{
         // Any client should be able to register as a user of the system with a unique/valid email and strong password
         // (i.e., a combination of uppercase letters, lowercase letters, numbers, and symbols).
         if(!checkStrongPW(password)) return false;
         if(!verifyEmail(email)) return false;
         User user = new User(type,email,password);
-        try {
-            // Add the information to the user database.
-            Database.getDatabase().addUser(user);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        
+        // Add the information to the user database.
+        Database.getDatabase().addUser(user);
         // If a client registers as a student, a faculty member or a non-faculty staff,
         // her/his registration requires a further validation from the management teams.
         return true;
     }
 
     //TODO
-    public static boolean login(String email,String password){
+    public static boolean login(String email,String password) throws Exception{
         //return true;
         // check the email and password from the database
         if(!verifyEmail(email)) {
@@ -44,7 +40,7 @@ public class RegisterAndLoginController {
         return false;
     }
 
-    private static boolean checkStrongPW(String pw) {
+    public static boolean checkStrongPW(String pw) {
         boolean hasupper=false;
         boolean hasnumber=false;
         if(pw.length()>=6) {
@@ -65,20 +61,16 @@ public class RegisterAndLoginController {
      * Check whether the same account is in the database already.
      * @param email
      * @return
+     * @throws Exception 
      */
-    private static boolean verifyEmail(String email)  {
+    public static boolean verifyEmail(String email) throws Exception  {
         if(email.contains("@")) {
-            try {
+      
         		//System.out.println(String.valueOf(Database.getDatabase().search(email,"email")));
             	if(Database.getDatabase().search(email,"email").equalsIgnoreCase("true")) {
-    				return true;
-    			}
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                return false;
-            }
+    				return true;           
+            	}
         }
-        return false;
+		return false;
     }
 }
- 
