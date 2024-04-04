@@ -40,7 +40,7 @@ public class LibrarySystemGUI extends Application {
         titleLabel.setAlignment(Pos.CENTER);
         HBox roleBox = new HBox();
         Label roleLabel = new Label("Role        ");
-        ObservableList<String> options = FXCollections.observableArrayList("Student", "Faulty", "Staff","Visitor");
+        ObservableList<String> options = FXCollections.observableArrayList("Student", "Faculty", "Staff","Visitor");
         ComboBox<String> roleComboBox = new ComboBox<>(options);
         roleComboBox.setPrefWidth(150);
         roleBox.getChildren().addAll(roleLabel, roleComboBox);
@@ -66,8 +66,22 @@ public class LibrarySystemGUI extends Application {
         buttonBox.getChildren().addAll(registerButton, buttonSpacer, loginButton);
 
         // Button Handler
-        registerButton.setOnAction(event -> onRegisterButtonClick(roleComboBox,emailTextField,passwdTextField));
-        loginButton.setOnAction(event -> onLoginButtonClick(roleComboBox,emailTextField,passwdTextField,primaryStage));
+        registerButton.setOnAction(event -> {
+			try {
+				onRegisterButtonClick(roleComboBox,emailTextField,passwdTextField);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+        loginButton.setOnAction(event -> {
+			try {
+				onLoginButtonClick(roleComboBox,emailTextField,passwdTextField,primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 
         root.getChildren().addAll(titleLabel, roleBox, emailBox, passwdBox, buttonBox);
 
@@ -77,7 +91,7 @@ public class LibrarySystemGUI extends Application {
         primaryStage.show();
     }
 
-    private void onLoginButtonClick(ComboBox<String> roleComboBox, TextField emailTextField, TextField passwdTextField, Stage primaryStage) {
+    private void onLoginButtonClick(ComboBox<String> roleComboBox, TextField emailTextField, TextField passwdTextField, Stage primaryStage) throws Exception {
         String type = roleComboBox.getValue();
         String email = emailTextField.getText();
         String passwd = passwdTextField.getText();
@@ -106,7 +120,7 @@ public class LibrarySystemGUI extends Application {
         }
     }
 
-    private void onRegisterButtonClick(ComboBox<String> roleComboBox, TextField emailTextField, TextField passwdTextField) {
+    private void onRegisterButtonClick(ComboBox<String> roleComboBox, TextField emailTextField, TextField passwdTextField) throws Exception {
         String type = roleComboBox.getValue();
         String email = emailTextField.getText();
         String passwd = passwdTextField.getText();
