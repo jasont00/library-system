@@ -4,7 +4,7 @@ public abstract class UserBuilder {
 	protected User user;
 	
 	public void createNewUser() {
-		user = new User(); 
+		user = new User("user", "usersEmail", "usersPassword");
 	}
 	
 	public abstract void buildType()throws Exception;
