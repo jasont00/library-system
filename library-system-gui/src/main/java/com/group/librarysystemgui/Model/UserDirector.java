@@ -4,7 +4,11 @@ class UserDirector {
 	private UserBuilder userBuilder;
 	
 	public void setUserBuilder(UserBuilder ub) {
-		userBuilder = ub;
+		this.userBuilder = ub;
+	}
+	
+	public UserBuilder getUserBuilder() {
+		return this.userBuilder;
 	}
 	
 	public User getUser() {
