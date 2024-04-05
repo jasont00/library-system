@@ -16,12 +16,17 @@ public class OnlineItem extends Item{
 
     public String open() {
         // This method should display the book contents
-        return "(Display book contents here";
+        return "(Display book contents here)";
     }
 
     public String getPublisher() {
         return publisher;
     }
+    
+    public void setPublisher(String p) {
+    	this.publisher = p;
+    }
+    
     @Override
     public String toString() {
         return "OnlineItem [name=" + name + ", id=" + id + ", type=" + type + ", price=" + price +", publisher="+publisher+ "]";

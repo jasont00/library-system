@@ -29,6 +29,10 @@ public class PhysicalItem extends Item{
     public void setRented(boolean b) {
         rented = b;
     }
+    
+    public boolean getRented() {
+    	return rented;
+    }
 
     public void setOwner(String email) {
     	this.owner = email;

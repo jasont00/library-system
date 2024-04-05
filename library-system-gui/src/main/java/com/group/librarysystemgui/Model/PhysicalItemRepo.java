@@ -10,10 +10,12 @@ public class PhysicalItemRepo {
         return inventory;
     }
     public static void addItem(PhysicalItem item) {
-        inventory.put(item.getId(), item);
+    	if (item != null) {
+            inventory.put(item.getId(), item);
 
-        String itemName = item.getName();	// account for occurrences of each item with the same name
-        itemOccurrences.put(itemName, itemOccurrences.getOrDefault(itemName, 0) + 1);
+            String itemName = item.getName();	// account for occurrences of each item with the same name
+            itemOccurrences.put(itemName, itemOccurrences.getOrDefault(itemName, 0) + 1);
+    	}
     }
 
     public static int countQuantity(String name) {		// should return the number of occurrences of an item in the inventory (if they have the same name)

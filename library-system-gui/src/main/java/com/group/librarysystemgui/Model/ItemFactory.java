@@ -25,12 +25,14 @@ public class ItemFactory {
                 return null;
             }
             item = new CD(name, price, rentable);
+            PhysicalItemRepo.addItem((PhysicalItem) item);
         } else if(type.equalsIgnoreCase("magazine")){
             if (PhysicalItemRepo.itemOccurrences.getOrDefault(name,0) > 20) {	// if there's already 20 items with the same name, return void;
                 System.out.println("There are already 20 copies of an item with the same name.");
                 return null;
             }
             item = new Magazine(name, price, rentable);
+            
             PhysicalItemRepo.addItem((PhysicalItem) item);
         } else if (type.equalsIgnoreCase("textbook")) {
             if(name.contains("%")){
