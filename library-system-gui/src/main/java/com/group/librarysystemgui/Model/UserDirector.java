@@ -20,6 +20,7 @@ class UserDirector {
 		userBuilder.buildType();
 		userBuilder.buildEmail();
 		userBuilder.buildPassword();
+		System.out.println("Build complete");
 		Database.getDatabase().loadUserData();
 		Database.getDatabase().updateuser();
 
