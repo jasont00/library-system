@@ -48,10 +48,6 @@ public class User implements TextBookObserver {
 		}
 	}
 
-	public User() {
-		//does nothing
-	}
-
 	public void setRentEligible(Boolean rent){
 		this.rentEligible = rent;
 	}
