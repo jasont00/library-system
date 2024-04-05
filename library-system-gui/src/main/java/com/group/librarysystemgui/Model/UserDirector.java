@@ -1,7 +1,7 @@
 package com.group.librarysystemgui.Model;
 
 class UserDirector {
-	private UserBuilder userBuilder;
+	UserBuilder userBuilder;
 	
 	public void setUserBuilder(UserBuilder ub) {
 		this.userBuilder = ub;
