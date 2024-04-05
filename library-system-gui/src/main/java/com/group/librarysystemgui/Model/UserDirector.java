@@ -16,7 +16,7 @@ class UserDirector {
 		userBuilder.buildType();
 		userBuilder.buildEmail();
 		userBuilder.buildPassword();
-		Database.getDatabase().loaduser(getUser());
+		Database.getDatabase().loadUserData();
 		Database.getDatabase().updateuser();
 
 	}
