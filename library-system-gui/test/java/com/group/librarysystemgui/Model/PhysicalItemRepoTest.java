@@ -104,12 +104,16 @@ class PhysicalItemRepoTest {
 	
 	@Test
 	void ReplaceItemTest() {
-		PhysicalItem book1 = new PhysicalItem("The Book", 19.99, true);
-		PhysicalItemRepo.getInventory().replace(3, book1);
-		
-		assertEquals(book1, PhysicalItemRepo.getInventory().get(3));
-		
 		PhysicalItemRepo PIR = new PhysicalItemRepo();
+		PhysicalItem book1 = new PhysicalItem("The Book", 19.99, true);
+		PhysicalItem book2 = new PhysicalItem("A Book", 19.99, true);
+		int id = book2.getId();
+		PhysicalItemRepo.getInventory().put(id, book2);
+		PhysicalItemRepo.getInventory().replace(id, book1);
+		
+		assertEquals(book1, PhysicalItemRepo.getInventory().get(id));
+		
+		
 	}
 	
 	@Test
