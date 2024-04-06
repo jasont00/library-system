@@ -33,9 +33,12 @@ public class Course {
         textbooks.add(t);
     }
 
-    public void printDetails() {
-        System.out.println("Name: " + name + " Code: " + code);
+    public String printDetails() {
+    	String s = "Name: " + name + " Code: " + code;
+        System.out.println(s);
+        return s;
     }
+
 
     public String getName() {
         return name;
