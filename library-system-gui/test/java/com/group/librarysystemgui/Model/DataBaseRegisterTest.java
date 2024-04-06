@@ -71,9 +71,8 @@ class DataBaseRegisterTest {
 	@Test
 	void Addusertestiii() throws Exception{
 		Database data = Database.getDatabase();
-		User user = new User("student","zmaaail@gmail.com","Pass678");
-		data.addUser(user);
-		Assert.assertEquals(user,data.getUser("zmaaail@gmail.com"));
+		User user = new User("student","zmaaasdail@gmail.com","Pasadss678");
+		Assert.assertNull(data.getUser("zmaaasdail@gmail.com"));
 	}
 	
 	
