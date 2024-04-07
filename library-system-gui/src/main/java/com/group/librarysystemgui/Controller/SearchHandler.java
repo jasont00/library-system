@@ -45,7 +45,7 @@ public class SearchHandler {
     }
 
     private static int levenshteinDistance(String key, String word) {
-        int[][]dist = new int[word.length()+1][word.length()+1];
+        int[][]dist = new int[word.length()+1][word.length()+key.length()];
 
         for (int i =0; i<= key.length(); i++) {
             for(int j=0; j<=word.length(); j++) {
