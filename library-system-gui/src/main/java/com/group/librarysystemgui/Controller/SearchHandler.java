@@ -19,7 +19,7 @@ public class SearchHandler {
         ArrayList<Textbook> items = new ArrayList<>();
         try {
             for (Map.Entry<Integer,PhysicalItem> entry:PhysicalItemRepo.inventory.entrySet()) {
-                if(entry.getValue().getName().equalsIgnoreCase(key)){
+                if(entry.getValue().getName().equalsIgnoreCase(key)  && entry.getValue() != null && entry.getValue().getName() != null){
                     items.add((Textbook) entry.getValue());
                 }
             }
