@@ -63,6 +63,10 @@ public class TextBookTracker {
         return instance;
     }
 
+     public List<TextBookSubject> getTextbooks(){
+    	return this.textbooks;
+    }
+
     /**
      * add the textbook to the tracker
      * and check the existing textbook
