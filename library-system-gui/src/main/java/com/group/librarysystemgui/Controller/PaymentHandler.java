@@ -12,5 +12,5 @@ public class PaymentHandler {
         price = price - (price*d);
         return price;
     }
-    }
+    
 }
