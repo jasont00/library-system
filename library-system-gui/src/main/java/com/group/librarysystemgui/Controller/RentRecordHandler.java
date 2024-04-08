@@ -48,7 +48,7 @@ public class RentRecordHandler {
      * @return count
      */
     public static int countOfOverDue(User user){
-        return 1;
+        return user.countOverDue();
     }
 
     /**
